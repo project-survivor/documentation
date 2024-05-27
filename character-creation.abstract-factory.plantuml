@@ -1,0 +1,90 @@
+@startuml
+title Abstract Factory - Character Creation
+
+interface IClass {
+ + action() : void
+}
+
+class Fighter implements IClass {
+  + action() : void
+}
+
+class Mage implements IClass {
+  + action() : void
+}
+
+class Hunter implements IClass{
+  + action() : void
+}
+
+interface IRace {
+ + characteristic() : void
+}
+
+class Human implements IRace {
+  + characteristic() : void
+}
+
+class Elf implements IRace {
+  + characteristic() : void
+}
+
+class Orc implements IRace {
+  + characteristic() : void
+}
+
+
+interface ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class HumanMageFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class HumanFighterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class HumanHunterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class ElfMageFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class ElfFighterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class ElfHunterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class OrcMageFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class OrcFighterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+class OrcHunterFactory implements ICharacterFactory {
+  + createClass() : IClass
+  + createRace() : IRace
+}
+
+ICharacterFactory .-left-.> IRace 
+ICharacterFactory .-right-.> IClass
+
+@enduml
