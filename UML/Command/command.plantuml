@@ -1,0 +1,34 @@
+@startuml
+hide footbox
+
+interface Command {
+    +execute(): void
+    +undo(): void
+}
+
+class AttackCommand implements Command {
+    +execute(): void
+    +undo(): void
+}
+
+class MoveCommand implements Command {
+    +execute(): void
+    +undo(): void
+}
+
+class UseItemCommand implements Command {
+    +execute(): void
+    +undo(): void
+}
+
+class InputHandler {
+    +handleInput(command: Command): void
+}
+
+Command <|.. AttackCommand
+Command <|.. MoveCommand
+Command <|.. UseItemCommand
+
+InputHandler "1" -- "*" Command
+
+@enduml

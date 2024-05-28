@@ -1,55 +1,55 @@
-## Stratégie 
+## OK Stratégie 
 
 - Faire un pattern Strategy pour changer l'algo en début de jeuu, pendant l'intro, combat avec un boss -> adopter une autre stategie (un temps qui sera différent, le boss peut te faire des dégats différents, etc)
 - mob qui va se comporter différemment si y'a un boss ce genre de conneries
 
-## Observer 
+## OK Observer 
 
 - Si le joueur a des équipments qui changent d'état en fonction de bonus/level up
 
-## States
+## OK States
 
 - Objet qui change de comportement en fonction de son état (empoisonnement)
 
-## Flyweight 
+## OK Flyweight 
 
 - Utiliser pour tout : les particules d'armes (baton magique qui envoie des boules de feu, arc qui envoie des flèches), les collectibles (pièces d'or, point d'expérience), les ennemis, les arbres sur la map etc
-- Permet de séparer les données identiques (sprite, couleur, vitesse) aux données propres de chaque objet (position/coordonnées)
+- Permet de séparer les données identiques (intrinsèque) (sprite, couleur, vitesse) aux données propres de chaque objet (extrinseque) (position/coordonnées)
 
-## Builder
+## OK Builder
 
 - Pour le joueur, on va utiliser des méthodes plutôt que d'utiliser le constructeur
 - Utilisation du directeur qui va servir comme chef d'orchestre (décider de l'ordre d'instanciation des différents éléments de notre personnage)
 
 
-## Composite feat Iterator 
+## OK Composite feat Iterator 
 
 - Potentiellement pour les menus => sous menu etc pour gérer les structures imbriqués
 
-## Command 
+## OK Command 
 
 - Si on est en train de faire une attaque et qu'on change de direction, on peut annuler l'attaque en cours
 - Les actions du joueur = une commande
 
-## Mediator 
+## OK Mediator 
 
 - Pour le game manager, qui va servir d'intermédiaire entre les différents élements du jeu -> but étant d'eviter le couplage
 
-# Proxy
+# OK Proxy/Bridge
 
 - A méditer si on doit controler une classe 
 
-## Memento
+## OK Memento
 
 - Couplage avec la stratégie pour prendre des snapshots sur l'état du jeu
 - Sauvegarde des états du jeu (au sens large) qu'on pourra utiliser plus tard
 
-## Prototype
+## OK Prototype
 
 - Permet de cloner les mobs, les particules etc
 - Ex : Au lieu de créer chaque vampire à partir de zéro, vous pouvez avoir un prototype pour chaque type de vampire, et chaque fois que vous avez besoin de créer un nouveau vampire, vous pouvez simplement cloner le prototype et modifier les attributs nécessaires. Cela peut vous faire gagner du temps et des ressources, surtout si la création d’un vampire est une opération coûteuse.
 
-## Chain of Responsibility
+## OK Chain of Responsibility
 
 Dans notre contexte, il peut y avoir une longue chaîne de responsabilités pour gérer différentes actions de l'utilisateur
 
@@ -65,19 +65,18 @@ Handler du Joueur (Gestionnaire du joueur) reçoit la requête.
 Quatrième Chaîne : Enfin, le gestionnaire du joueur effectue l'action, comme déplacer le joueur vers le haut sur la carte.
 
 
-## Singleton
+##  OK Singleton
 
 - Ecriture dans un fichier json pour la sauvegarde de jeu -> le but étant de ne pas écrire plusieurs fois dans le fichier json
 
-
-## Factory / Abstract Factory
+## OK Factory / Abstract Factory
 
 - Factory pour les objets du jeu (armes, potions, etc)
 - Abstract Factory pour les personnages (humain, elfe, orc) et les classes (mage, guerrier, assassin, archer)
 - Factory Method pour les sorts (sorts de feu, sorts de glace, etc)
 - 
 
-## Decorator
+## OK Decorator
 
 - Pour les armes, on commence la partie avec une épée avec degats bruts, si l'arme lvl up on pourra utiliser un decorator FireSwordDecorator ou PoisonSwordDecorator pour la faire évoluer a travers ces décorateurs -> décorateur permet d'ajouter des capacités spéciales à un GameObject 
 

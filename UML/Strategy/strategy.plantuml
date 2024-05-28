@@ -1,0 +1,28 @@
+@startuml
+hide footbox
+
+interface EnemyBehavior {
+    +execute(): void
+}
+
+class AttackBehavior implements EnemyBehavior {
+    +execute(): void
+}
+
+class FleeBehavior implements EnemyBehavior {
+    +execute(): void
+}
+
+class PatrolBehavior implements EnemyBehavior {
+    +execute(): void
+}
+
+class Enemy {
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
+}
+
+Enemy *-- EnemyBehavior
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+hide footbox
+
+class Singleton {
+    -instance: Singleton
+    +getInstance(): Singleton
+}
+
+class JSONConfigManager {
+    -instance: JSONConfigManager
+    -jsonData: String
+    +getInstance(): JSONConfigManager
+    +loadDataFromDisk(): void
+    +saveDataToDisk(): void
+    +getData(): String
+    +setData(data: String): void
+}
+
+JSONConfigManager --|> Singleton
+
+@enduml

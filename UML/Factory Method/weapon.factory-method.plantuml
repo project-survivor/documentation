@@ -1,0 +1,59 @@
+@startuml WeaponFactoryMethod
+
+title Weapon Factory Method
+
+abstract class WeaponFactory {
+    {abstract} +createWeapon() : IWeapon
+}
+
+interface IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    + attack1()
+    + attack2()
+}
+
+class Sword implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    + attack1()
+    + attack2()
+}
+
+class Bow implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    + attack1()
+    + attack2()
+}
+
+class Wand implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    + attack1()
+    + attack2()
+}
+
+class SwordFactory extends WeaponFactory {
+    +createWeapon(): IWeapon
+}
+
+class BowFactory extends WeaponFactory {
+    +createWeapon(): IWeapon
+}
+
+class WandFactory extends WeaponFactory {
+    +createWeapon(): IWeapon
+}
+
+WeaponFactory ..> IWeapon : creates
+
+@enduml

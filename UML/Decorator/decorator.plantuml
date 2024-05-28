@@ -1,0 +1,33 @@
+@startuml
+hide footbox
+
+interface Weapon {
+    +attack(): void
+}
+
+class BaseWeapon  {
+    +attack(): void
+}
+
+abstract class WeaponDecorator {
+    -weapon: Weapon
+    +WeaponDecorator(weapon: Weapon)
+    +attack(): void
+}
+
+class FireWeaponDecorator {
+    +FireWeaponDecorator(weapon: Weapon)
+    +attack(): void
+}
+
+class PoisonWeaponDecorator {
+    +PoisonWeaponDecorator(weapon: Weapon)
+    +attack(): void
+}
+
+Weapon <|.. BaseWeapon
+Weapon <|.. WeaponDecorator
+WeaponDecorator <|-- FireWeaponDecorator
+WeaponDecorator <|-- PoisonWeaponDecorator
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+hide footbox
+
+abstract class LevelGenerator {
+    +generateLevel(): void
+    #generateTerrain(): void
+    #generateEnemies(): void
+    #generateItems(): void
+}
+
+class CaveLevelGenerator {
+    #generateTerrain(): void
+    #generateEnemies(): void
+    #generateItems(): void
+}
+
+class DungeonLevelGenerator {
+    #generateTerrain(): void
+    #generateEnemies(): void
+    #generateItems(): void
+}
+
+LevelGenerator <|-- CaveLevelGenerator
+LevelGenerator <|-- DungeonLevelGenerator
+
+@enduml

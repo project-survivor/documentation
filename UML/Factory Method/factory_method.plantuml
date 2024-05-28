@@ -1,0 +1,44 @@
+@startuml
+hide footbox
+
+abstract class Enemy {
+    +abstract attack(): void
+}
+
+class Zombie {
+    +attack(): void
+}
+
+class Vampire {
+    +attack(): void
+}
+
+class Werewolf {
+    +attack(): void
+}
+
+abstract class EnemyFactory {
+    +abstract createEnemy(): Enemy
+}
+
+class ZombieFactory {
+    +createEnemy(): Enemy
+}
+
+class VampireFactory {
+    +createEnemy(): Enemy
+}
+
+class WerewolfFactory {
+    +createEnemy(): Enemy
+}
+
+Enemy <|-- Zombie
+Enemy <|-- Vampire
+Enemy <|-- Werewolf
+
+EnemyFactory <|-- ZombieFactory
+EnemyFactory <|-- VampireFactory
+EnemyFactory <|-- WerewolfFactory
+
+@enduml

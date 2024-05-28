@@ -1,0 +1,117 @@
+@startuml EquipmentAbstractFactory
+title Abstract Factory - Equipment Creation
+
+interface IEquipmentFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+interface IArmor {
+
+}
+
+
+class Light implements IArmor {
+  -armorValue: int
+  -weight: int
+  -healthBonus: int
+  -speedPenalty: int
+}
+
+class Medium implements IArmor {
+  -armorValue: int
+  -weight: int
+  -healthBonus: int
+  -speedPenalty: int
+}
+
+class Heavy implements IArmor {
+  -armorValue: int
+  -weight: int
+  -healthBonus: int
+  -speedPenalty: int
+}
+
+interface IBodyPart {
+
+}
+
+class Head implements IBodyPart {
+  -health: int
+  -weight: int
+  -speedBonus: int
+}
+
+class Torso implements IBodyPart {
+  -health: int
+  -weight: int
+  -speedBonus: int
+}
+
+class Legs implements IBodyPart {
+  -health: int
+  -weight: int
+  -speedBonus: int
+}
+
+class LightHeadFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class LightTorsoFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class LightLegsFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class MediumHeadFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class MediumTorsoFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class MediumLegsFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class HeavyHeadFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class HeavyTorsoFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+class HeavyLegsFactory {
+  +createBodyPart(): IBodyPart
+  +createArmor(): IArmor
+}
+
+IEquipmentFactory .-left-.> IBodyPart 
+IEquipmentFactory .-right-.> IArmor
+
+IEquipmentFactory <|.up. LightHeadFactory
+IEquipmentFactory <|.up. LightTorsoFactory
+IEquipmentFactory <|.up. LightLegsFactory
+
+IEquipmentFactory <|.up. MediumHeadFactory
+IEquipmentFactory <|.up. MediumTorsoFactory
+IEquipmentFactory <|.down. MediumLegsFactory
+
+IEquipmentFactory <|.down. HeavyHeadFactory
+IEquipmentFactory <|.down. HeavyTorsoFactory
+IEquipmentFactory <|.down. HeavyLegsFactory
+
+@enduml

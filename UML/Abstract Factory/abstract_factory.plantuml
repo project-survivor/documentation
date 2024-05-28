@@ -1,0 +1,62 @@
+@startuml
+hide footbox
+
+interface Character {
+    {abstract} +attack(): void
+}
+
+interface Equipment {
+    {abstract} +use(): void
+}
+
+class Elf implements Character {
+    +attack(): void
+}
+
+class Orc implements Character {
+    +attack(): void
+}
+
+class Sword implements Equipment {
+    +use(): void
+}
+
+class Shield implements Equipment {
+    +use(): void
+}
+
+abstract class CharacterFactory {
+    {abstract} +createCharacter(): Character
+}
+
+abstract class EquipmentFactory {
+    {abstract} +createEquipment(): Equipment
+}
+
+class ElfFactory {
+    +createCharacter(): Character
+}
+
+class OrcFactory {
+    +createCharacter(): Character
+}
+
+class SwordFactory {
+    +createEquipment(): Equipment
+}
+
+class ShieldFactory {
+    +createEquipment(): Equipment
+}
+
+CharacterFactory <|.. ElfFactory
+CharacterFactory <|.. OrcFactory
+EquipmentFactory <|.. SwordFactory
+EquipmentFactory <|.. ShieldFactory
+
+ElfFactory ..> Elf
+OrcFactory ..> Orc
+SwordFactory ..> Sword
+ShieldFactory ..> Shield
+
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+hide footbox
+
+class Projectile {
+    +positionX: int
+    +positionY: int
+    +damage: int
+    +texture: Texture
+    +Projectile(damage: int, texture: Texture)
+    +draw(positionX: int, positionY: int): void
+}
+
+class ProjectileFactory {
+    -projectiles: Map<String, Projectile>
+    +getProjectile(damage: int, texture: Texture): Projectile
+}
+
+class Texture {
+    +data: byte[]
+    +Texture(data: byte[])
+}
+
+Projectile --> Texture
+ProjectileFactory o-- Projectile
+
+@enduml

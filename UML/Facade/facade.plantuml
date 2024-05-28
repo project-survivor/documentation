@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+
+class RenderingSystem {
+    +renderScene(): void
+}
+
+class InputSystem {
+    +processInput(): void
+}
+
+class ResourceManager {
+    +loadResources(): void
+    +getResource(resourceID: String): Resource
+}
+
+class GameFacade {
+    -renderingSystem: RenderingSystem
+    -inputSystem: InputSystem
+    -resourceManager: ResourceManager
+    +GameFacade()
+    +startGame(): void
+}
+
+GameFacade *-- RenderingSystem
+GameFacade *-- InputSystem
+GameFacade *-- ResourceManager
+
+@enduml

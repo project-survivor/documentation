@@ -1,0 +1,47 @@
+@startuml
+hide footbox
+
+interface RenderEngine {
+    {abstract} +render(): void
+}
+
+class OpenGLRenderer implements RenderEngine {
+    +render(): void
+}
+
+class DirectXRenderer implements RenderEngine {
+    +render(): void
+}
+
+abstract class Game {
+    -renderEngine: RenderEngine
+    +Game(renderEngine: RenderEngine)
+    {abstract} +play(): void
+}
+
+class WindowsGame extends Game {
+    +WindowsGame(renderEngine: RenderEngine)
+    +play(): void
+}
+
+class MacOSGame extends Game {
+    +MacOSGame(renderEngine: RenderEngine)
+    +play(): void
+}
+
+class ConsoleGame extends Game {
+    +ConsoleGame(renderEngine: RenderEngine)
+    +play(): void
+}
+
+RenderEngine <|.. OpenGLRenderer
+RenderEngine <|.. DirectXRenderer
+Game <|-- WindowsGame
+Game <|-- MacOSGame
+Game <|-- ConsoleGame
+
+WindowsGame *-- RenderEngine
+MacOSGame *-- RenderEngine
+ConsoleGame *-- RenderEngine
+
+@enduml

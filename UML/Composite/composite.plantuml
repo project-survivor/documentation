@@ -1,0 +1,22 @@
+@startuml
+hide footbox
+
+interface Particle {
+    +render(): void
+}
+
+class SimpleParticle implements Particle {
+    +render(): void
+}
+
+class ParticleGroup implements Particle {
+    -particles: List<Particle>
+    +addParticle(particle: Particle): void
+    +removeParticle(particle: Particle): void
+    +render(): void
+}
+
+Particle <|-- SimpleParticle
+Particle <|-- ParticleGroup
+
+@enduml

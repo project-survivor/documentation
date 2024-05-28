@@ -1,0 +1,36 @@
+@startuml
+hide footbox
+
+interface Handler {
+    +setNext(handler: Handler): void
+    +handleRequest(request: Request): void
+}
+
+class InputHandler implements Handler {
+    -next: Handler
+    +setNext(handler: Handler): void
+    +handleRequest(request: Request): void
+}
+
+class MovementHandler implements Handler {
+    -next: Handler
+    +setNext(handler: Handler): void
+    +handleRequest(request: Request): void
+}
+
+class ActionHandler implements Handler {
+    -next: Handler
+    +setNext(handler: Handler): void
+    +handleRequest(request: Request): void
+}
+
+class Request {
+    +type: String
+    +data: Object
+}
+
+Handler <|-- InputHandler
+Handler <|-- MovementHandler
+Handler <|-- ActionHandler
+
+@enduml

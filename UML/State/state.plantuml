@@ -1,0 +1,37 @@
+@startuml
+hide footbox
+
+interface CharacterState {
+    +handleInput(): void
+    +update(): void
+}
+
+class NormalState implements CharacterState {
+    +handleInput(): void
+    +update(): void
+}
+
+class PoisonedState implements CharacterState {
+    +handleInput(): void
+    +update(): void
+}
+
+class EnragedState implements CharacterState {
+    +handleInput(): void
+    +update(): void
+}
+
+class Character {
+    -state: CharacterState
+    +setState(state: CharacterState): void
+    +handleInput(): void
+    +update(): void
+}
+
+CharacterState <|.. NormalState
+CharacterState <|.. PoisonedState
+CharacterState <|.. EnragedState
+
+Character o-- CharacterState
+
+@enduml

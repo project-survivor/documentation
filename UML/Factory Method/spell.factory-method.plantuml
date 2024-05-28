@@ -1,0 +1,62 @@
+@startuml SpellFactoryMethod
+
+title Spell Factory Method
+
+abstract class SpellFactory {
+    {abstract} +createSpell() : ISpell[]
+}
+
+interface ISpell {
+    
+}
+
+class ArrowRain {
+    
+}
+
+class PiercingArrow {
+    
+}
+
+class MagicOrb {
+    
+}
+
+class Avadakedavra {
+    
+}
+
+class ThunderBlade {
+    
+}
+
+class DragonsFury{
+    
+}
+
+class HunterSpellFactory {
+    +createSpell(): ISpell[]
+}
+
+class MageSpellFactory  {
+    +createSpell(): ISpell[]
+}
+
+class FighterSpellFactory  {
+    +createSpell(): ISpell[]
+}
+
+SpellFactory .left.> ISpell : creates
+
+SpellFactory <|-right- HunterSpellFactory
+SpellFactory <|-up- MageSpellFactory
+SpellFactory <|-down- FighterSpellFactory
+
+ISpell <|.up. ArrowRain
+ISpell <|.up. PiercingArrow
+ISpell <|.up. MagicOrb
+ISpell <|.down. Avadakedavra
+ISpell <|.down. ThunderBlade
+ISpell <|.down. DragonsFury
+
+@enduml

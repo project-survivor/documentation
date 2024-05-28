@@ -2,18 +2,26 @@
 title Abstract Factory - Character Creation
 
 interface IClass {
+ -baseWeapon: IWeapon
+ -equipment: IEquipment
  + action() : void
 }
 
 class Fighter implements IClass {
+  -baseWeapon: IWeapon
+  -equipment: IEquipment
   + action() : void
 }
 
 class Mage implements IClass {
+  -baseWeapon: IWeapon
+  -equipment: IEquipment
   + action() : void
 }
 
 class Hunter implements IClass{
+  -baseWeapon: IWeapon
+  -equipment: IEquipment
   + action() : void
 }
 
@@ -33,56 +41,66 @@ class Orc implements IRace {
   + characteristic() : void
 }
 
-
 interface ICharacterFactory {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class HumanMageFactory implements ICharacterFactory {
+class HumanMageFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class HumanFighterFactory implements ICharacterFactory {
+class HumanFighterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class HumanHunterFactory implements ICharacterFactory {
+class HumanHunterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class ElfMageFactory implements ICharacterFactory {
+class ElfMageFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class ElfFighterFactory implements ICharacterFactory {
+class ElfFighterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class ElfHunterFactory implements ICharacterFactory {
+class ElfHunterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class OrcMageFactory implements ICharacterFactory {
+class OrcMageFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class OrcFighterFactory implements ICharacterFactory {
+class OrcFighterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
 
-class OrcHunterFactory implements ICharacterFactory {
+class OrcHunterFactory   {
   + createClass() : IClass
   + createRace() : IRace
 }
+
+ICharacterFactory <|.up. HumanMageFactory
+ICharacterFactory <|.up. HumanFighterFactory
+ICharacterFactory <|.up. HumanHunterFactory
+ICharacterFactory <|.up. ElfMageFactory
+ICharacterFactory <|.up. ElfFighterFactory
+ICharacterFactory <|.down. ElfHunterFactory
+ICharacterFactory <|.down. OrcMageFactory
+ICharacterFactory <|.down. OrcFighterFactory
+ICharacterFactory <|.down. OrcHunterFactory
+
 
 ICharacterFactory .-left-.> IRace 
 ICharacterFactory .-right-.> IClass

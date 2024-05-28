@@ -1,0 +1,22 @@
+@startuml
+hide footbox
+
+class Game {
+    -state: GameState
+    +createMemento(): Memento
+    +restoreMemento(memento: Memento): void
+}
+
+class GameState {
+    +getState(): Object
+}
+
+class Memento {
+    -state: Object
+    +getState(): Object
+}
+
+Game *-- Memento : creates
+Game o-- GameState : contains
+
+@enduml

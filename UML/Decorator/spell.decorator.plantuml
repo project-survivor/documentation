@@ -1,0 +1,74 @@
+@startuml
+
+title Spell Decorator Pattern
+
+interface ISpell {
+    
+}
+
+class ArrowRain {
+    
+}
+
+class PiercingArrow {
+    
+}
+
+class MagicOrb {
+    
+}
+
+class Avadakedavra {
+    
+}
+
+class ThunderBlade {
+    
+}
+
+class DragonsFury{
+    
+}
+
+abstract class SpellDecorator {
+    -spell: ISpell
+    +WeaponDecorator(spell: ISpell)
+    +attack(): void
+}
+
+class FireSpellDecorator {
+    +FireSpellDecorator(spell: ISpell)
+    +attack(): void
+}
+
+class WaterSpellDecorator {
+    +WaterSpellDecorator(spell: ISpell)
+    +attack(): void
+}
+
+class GroundSpellDecorator {
+    +GroundSpellDecorator(spell: ISpell)
+    +attack(): void
+}
+
+class AirSpellDecorator {
+    +AirSpellDecorator(spell: ISpell)
+    +attack(): void
+}
+
+ISpell <--o SpellDecorator
+
+SpellDecorator <|-- FireSpellDecorator
+SpellDecorator <|-- WaterSpellDecorator
+SpellDecorator <|-- GroundSpellDecorator
+SpellDecorator <|-- AirSpellDecorator
+
+
+ISpell <|.. ArrowRain
+ISpell <|.. PiercingArrow
+ISpell <|.. MagicOrb
+ISpell <|.. Avadakedavra
+ISpell <|.. ThunderBlade
+ISpell <|.. DragonsFury
+
+@enduml

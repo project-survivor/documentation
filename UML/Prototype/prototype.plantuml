@@ -1,0 +1,20 @@
+@startuml
+hide footbox
+
+class Enemy implements Cloneable {
+    -name: String
+    -health: int
+    -damage: int
+    +Enemy(name: String, health: int, damage: int)
+    +getName(): String
+    +getHealth(): int
+    +getDamage(): int
+    +setName(name: String): void
+    +setHealth(health: int): void
+    +setDamage(damage: int): void
+    +clone(): Enemy
+}
+
+Enemy *-- Enemy : prototype
+
+@enduml

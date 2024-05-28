@@ -1,0 +1,45 @@
+@startuml
+hide footbox
+
+interface Observer {
+    +update(event: Event): void
+}
+
+interface Subject {
+    +attach(observer: Observer): void
+    +detach(observer: Observer): void
+    +notify(event: Event): void
+}
+
+class Event {
+    +type: String
+    +data: Object
+}
+
+class Player implements Subject {
+    -observers: List<Observer>
+    +attach(observer: Observer): void
+    +detach(observer: Observer): void
+    +notify(event: Event): void
+    +moveTo(x: int, y: int): void
+}
+
+class Enemy implements Observer {
+    +update(event: Event): void
+    +followPlayer(): void
+}
+
+class Environment implements Observer {
+    +update(event: Event): void
+    +changeWeather(): void
+}
+
+Observer <|.. Enemy
+Observer <|.. Environment
+Subject <|-- Player
+
+Player o-- Observer : maintains
+Enemy --|> Observer : observes
+Environment --|> Observer : observes
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+hide footbox
+
+interface SoundPlayer {
+    {abstract} +playSound(sound: String): void
+}
+
+class ThirdPartySoundLibrary {
+    +play(soundFile: String): void
+}
+
+class SoundAdapter {
+    -thirdPartyLibrary: ThirdPartySoundLibrary
+    +SoundAdapter(thirdPartyLibrary: ThirdPartySoundLibrary)
+    +playSound(sound: String): void
+}
+
+SoundPlayer <|.. SoundAdapter
+SoundAdapter *-- ThirdPartySoundLibrary
+
+@enduml

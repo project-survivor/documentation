@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+
+class Character {
+    -strength: int
+    -agility: int
+    -skills: String[]
+    -equipment: String
+    +Character()
+    +setStrength(strength: int): void
+    +setAgility(agility: int): void
+    +setSkills(skills: String[]): void
+    +setEquipment(equipment: String): void
+    +display(): void
+}
+
+class CharacterBuilder {
+    -character: Character
+    +CharacterBuilder()
+    +setStrength(strength: int): CharacterBuilder
+    +setAgility(agility: int): CharacterBuilder
+    +setSkills(skills: String[]): CharacterBuilder
+    +setEquipment(equipment: String): CharacterBuilder
+    +build(): Character
+}
+
+Character *-- CharacterBuilder
+
+@enduml

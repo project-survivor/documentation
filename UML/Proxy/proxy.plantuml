@@ -1,0 +1,24 @@
+@startuml
+hide footbox
+
+interface Game {
+    +login(username: String, password: String): void
+    +play(): void
+}
+
+class RealGame implements Game {
+    +login(username: String, password: String): void
+    +play(): void
+}
+
+class GameProxy implements Game {
+    -realGame: RealGame
+    +login(username: String, password: String): void
+    +play(): void
+    -checkAccess(username: String, password: String): boolean
+}
+
+Game <|.. RealGame
+Game <|.. GameProxy
+
+@enduml
