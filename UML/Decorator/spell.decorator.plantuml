@@ -32,7 +32,7 @@ class DragonsFury{
 
 abstract class SpellDecorator {
     -spell: ISpell
-    +WeaponDecorator(spell: ISpell)
+    +SpellDecorator(spell: ISpell)
     +attack(): void
 }
 

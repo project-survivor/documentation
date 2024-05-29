@@ -1,0 +1,63 @@
+@startuml
+
+title Enemy Factory Method
+
+interface IEnemy {
+    +abstract attack(): void
+    +abstract clone(): IEnemy
+}
+
+class Zombie {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+class Vampire {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+class Werewolf {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+abstract class IEnemyFactory {
+    +abstract createIEnemy(): IEnemy
+}
+
+class ZombieFactory {
+    +createIEnemy(): IEnemy
+}
+
+class VampireFactory {
+    +createIEnemy(): IEnemy
+}
+
+class WerewolfFactory {
+    +createIEnemy(): IEnemy
+}
+
+IEnemy <|-- Zombie
+IEnemy <|-- Vampire
+IEnemy <|-- Werewolf
+
+IEnemyFactory <|-- ZombieFactory
+IEnemyFactory <|-- VampireFactory
+IEnemyFactory <|-- WerewolfFactory
+
+IEnemyFactory ..> IEnemy : creates
+
+@enduml

@@ -43,12 +43,23 @@ Les types d'armes sont : épée, arc, baguette magique
 
 ### Création des sorts
 
-Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe : 
-- Archer : pluie de flêches, flêche transpercante, ...
-- Mage : boule magique, avadakedavra, ...
-- Guerrier : lame du tonerre, fureur du dragon, ...
+Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe (mage, chasseur, et guerrier). Il pourra en apprendre d'autres au cours de la partie. En bref, si tu es Mage, cela va instancier deux sorts de Mage, etc.
 
 > Fichier UML : [spell.factory-method](UML/Factory%20Method/spell.factory-method.plantuml)
+
+## Création des ennemis 
+
+Le but étant de créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
+
+> Fichier UML : [enemy.factory-method](UML/Factory%20Method/enemy.factory-method.plantuml)
+
+# Prototype
+
+## Clone des ennemis
+
+Le but étant de cloner les ennemis pour éviter de les recréer à chaque fois qu'ils apparaissent. Il y a un registre qui va stocker les ennemis clonés qui permet de stocker des ennemis qui ont déjà été copiés.
+
+> Fichier UML : [enemy.prototype](UML/Prototype/enemy.prototype.plantuml)
 
 # II. Pattern structurel
 
@@ -65,3 +76,4 @@ Pour chacun de ces sorts, un élément pourra lui être affecté afin de modifie
 > Fichier UML : [spell.decorator](UML/Decorator/spell.decorator.plantuml)
 
 # III. Pattern comportemental
+

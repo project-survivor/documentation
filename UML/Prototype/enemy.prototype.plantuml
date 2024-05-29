@@ -1,0 +1,49 @@
+@startuml
+
+title Enemy Prototype Pattern
+
+class IEnemyRegistry {
+    -enemies: IEnemy[]
+    +addIEnemy(id: string, IEnemy: IEnemy): void
+    +getIEnemyById(id: string): IEnemy
+}
+
+interface IEnemy {
+    +abstract attack(): void
+    +abstract clone(): IEnemy
+}
+
+class Zombie implements IEnemy {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+class Vampire implements IEnemy {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+class Werewolf implements IEnemy {
+    -speed: number
+    -health: number
+    -damage: number
+    -sprite
+    +abstract attack(): void
+    +clone(): IEnemy
+}
+
+IEnemyRegistry o--> IEnemy : prototype
+
+note right of IEnemy::clone
+Deep copy for the clone
+end note
+
+@enduml

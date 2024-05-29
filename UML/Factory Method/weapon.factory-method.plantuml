@@ -7,10 +7,6 @@ abstract class WeaponFactory {
 }
 
 interface IWeapon {
-    + physicalDamage : int
-    + magicalDamage : int
-    + criticalRate : int
-    + attackSpeed : int
     + attack1()
     + attack2()
 }

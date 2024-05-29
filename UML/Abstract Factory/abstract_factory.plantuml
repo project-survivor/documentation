@@ -1,62 +1,43 @@
 @startuml
 hide footbox
 
-interface Character {
-    {abstract} +attack(): void
+interface ISword {
+
 }
 
-interface Equipment {
-    {abstract} +use(): void
+interface IShield {
+
 }
 
-class Elf implements Character {
-    +attack(): void
+class ElfSword implements ISword {
+
 }
 
-class Orc implements Character {
-    +attack(): void
+class OrcSword implements ISword {
+
 }
 
-class Sword implements Equipment {
-    +use(): void
+class ElfShield implements IShield {
+
 }
 
-class Shield implements Equipment {
-    +use(): void
+class OrcShield implements IShield {
+
 }
 
-abstract class CharacterFactory {
-    {abstract} +createCharacter(): Character
+interface IWeaponFactory {
+    +createSword(): ISword
+    +createShield(): IShield
 }
 
-abstract class EquipmentFactory {
-    {abstract} +createEquipment(): Equipment
+class ElfWeaponFactory implements IWeaponFactory {
+    +createSword(): ISword
+    +createShield(): IShield
 }
 
-class ElfFactory {
-    +createCharacter(): Character
+class OrcWeaponFactory implements IWeaponFactory {
+    +createSword(): ISword
+    +createShield(): IShield
 }
-
-class OrcFactory {
-    +createCharacter(): Character
-}
-
-class SwordFactory {
-    +createEquipment(): Equipment
-}
-
-class ShieldFactory {
-    +createEquipment(): Equipment
-}
-
-CharacterFactory <|.. ElfFactory
-CharacterFactory <|.. OrcFactory
-EquipmentFactory <|.. SwordFactory
-EquipmentFactory <|.. ShieldFactory
-
-ElfFactory ..> Elf
-OrcFactory ..> Orc
-SwordFactory ..> Sword
-ShieldFactory ..> Shield
 
 @enduml

@@ -2,116 +2,118 @@
 title Abstract Factory - Equipment Creation
 
 interface IEquipmentFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+  +createHead(): IHead
+  +createTorso(): ITorso
+  +createLegs(): ILegs
 }
 
-interface IArmor {
-
+interface IHead {
 }
 
-
-class Light implements IArmor {
-  -armorValue: int
-  -weight: int
-  -healthBonus: int
-  -speedPenalty: int
+interface ITorso {
 }
 
-class Medium implements IArmor {
-  -armorValue: int
-  -weight: int
-  -healthBonus: int
-  -speedPenalty: int
+interface ILegs {
 }
 
-class Heavy implements IArmor {
-  -armorValue: int
-  -weight: int
-  -healthBonus: int
-  -speedPenalty: int
-}
-
-interface IBodyPart {
-
-}
-
-class Head implements IBodyPart {
+class LightHead {
   -health: int
   -weight: int
   -speedBonus: int
 }
 
-class Torso implements IBodyPart {
+class LightTorso {
   -health: int
   -weight: int
   -speedBonus: int
 }
 
-class Legs implements IBodyPart {
+class LightLegs {
   -health: int
   -weight: int
   -speedBonus: int
 }
 
-class LightHeadFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class MediumHead {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class LightTorsoFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class MediumTorso {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class LightLegsFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class MediumLegs {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class MediumHeadFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class HeavyHead {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class MediumTorsoFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class HeavyTorso {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class MediumLegsFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class HeavyLegs {
+  -health: int
+  -weight: int
+  -speedBonus: int
 }
 
-class HeavyHeadFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class LightEquipmentFactory {
+  +createHead(): IHead
+  +createTorso(): ITorso
+  +createLegs(): ILegs
 }
 
-class HeavyTorsoFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class MediumEquipmentFactory {
+  +createHead(): IHead
+  +createTorso(): ITorso
+  +createLegs(): ILegs
 }
 
-class HeavyLegsFactory {
-  +createBodyPart(): IBodyPart
-  +createArmor(): IArmor
+class HeavyEquipmentFactory {
+  +createHead(): IHead
+  +createTorso(): ITorso
+  +createLegs(): ILegs
 }
 
-IEquipmentFactory .-left-.> IBodyPart 
-IEquipmentFactory .-right-.> IArmor
+IHead  <|-- LightHead
+ILegs  <|-- LightLegs
+ITorso <|-- LightTorso
 
-IEquipmentFactory <|.up. LightHeadFactory
-IEquipmentFactory <|.up. LightTorsoFactory
-IEquipmentFactory <|.up. LightLegsFactory
+IHead  <|-- MediumHead
+ITorso <|-- MediumTorso
+ILegs  <|-- MediumLegs
 
-IEquipmentFactory <|.up. MediumHeadFactory
-IEquipmentFactory <|.up. MediumTorsoFactory
-IEquipmentFactory <|.down. MediumLegsFactory
+ILegs  <|-- HeavyLegs
+IHead  <|-- HeavyHead
+ITorso <|-- HeavyTorso
 
-IEquipmentFactory <|.down. HeavyHeadFactory
-IEquipmentFactory <|.down. HeavyTorsoFactory
-IEquipmentFactory <|.down. HeavyLegsFactory
+IEquipmentFactory <|-- LightEquipmentFactory
+IEquipmentFactory <|-- MediumEquipmentFactory
+IEquipmentFactory <|-- HeavyEquipmentFactory
+
+LightEquipmentFactory --> LightHead : create
+LightEquipmentFactory --> LightTorso : create
+LightEquipmentFactory --> LightLegs : create
+
+MediumEquipmentFactory --> MediumHead : create
+MediumEquipmentFactory --> MediumTorso : create
+MediumEquipmentFactory --> MediumLegs : create
+
+HeavyEquipmentFactory --> HeavyHead : create
+HeavyEquipmentFactory --> HeavyTorso : create
+HeavyEquipmentFactory --> HeavyLegs : create
 
 @enduml

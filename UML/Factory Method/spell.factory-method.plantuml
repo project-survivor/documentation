@@ -3,47 +3,47 @@
 title Spell Factory Method
 
 abstract class SpellFactory {
-    {abstract} +createSpell() : ISpell[]
+    {abstract} +createSpell(name: string, damage: int): ISpell
 }
 
 interface ISpell {
-    
+    +name
+    +damage
+    +cast()
+    +render()   
 }
 
-class ArrowRain {
-    
+class MageSpell {
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
-class PiercingArrow {
-    
+class HunterSpell {
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
-class MagicOrb {
-    
-}
-
-class Avadakedavra {
-    
-}
-
-class ThunderBlade {
-    
-}
-
-class DragonsFury{
-    
+class FighterSpell {
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
 class HunterSpellFactory {
-    +createSpell(): ISpell[]
+    +createSpell(name: string, damage: int): ISpell
 }
 
 class MageSpellFactory  {
-    +createSpell(): ISpell[]
+    +createSpell(name: string, damage: int): ISpell
 }
 
 class FighterSpellFactory  {
-    +createSpell(): ISpell[]
+    +createSpell(name: string, damage: int): ISpell
 }
 
 SpellFactory .left.> ISpell : creates
@@ -52,11 +52,8 @@ SpellFactory <|-right- HunterSpellFactory
 SpellFactory <|-up- MageSpellFactory
 SpellFactory <|-down- FighterSpellFactory
 
-ISpell <|.up. ArrowRain
-ISpell <|.up. PiercingArrow
-ISpell <|.up. MagicOrb
-ISpell <|.down. Avadakedavra
-ISpell <|.down. ThunderBlade
-ISpell <|.down. DragonsFury
+ISpell <|.up. MageSpell
+ISpell <|.up. HunterSpell
+ISpell <|.up. FighterSpell
 
 @enduml
