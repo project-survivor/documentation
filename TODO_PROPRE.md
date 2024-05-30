@@ -124,8 +124,8 @@ Le pattern Observer définit une relation de dépendance un-à-plusieurs entre d
 Le pattern Strategy définit une famille d'algorithmes, encapsule chaque algorithme et les rend interchangeables. Le pattern Strategy permet à l'algorithme de varier indépendamment des clients qui l'utilisent.
 
 ### Pertinence et Exemple
-- **Comportements des ennemis** : Permettre aux ennemis d'adopter différentes stratégies de combat ou de déplacement en fonction de leur situation (par exemple, en combat de boss ou en patrouille).
-- **Gestion des armes** : Utiliser différentes stratégies de tir pour des armes variées (tir en ligne droite, tir en éventail, etc.).
+- 🟨 **Comportements des ennemis** : Permettre aux ennemis d'adopter différentes stratégies de combat ou de déplacement en fonction de leur situation (par exemple, en combat de boss ou en patrouille).
+- 🟨 **Gestion des armes** : Utiliser différentes stratégies de tir pour des armes variées (tir en ligne droite, tir en éventail, etc.).
 
 ## Command
 

@@ -1,6 +1,16 @@
 @startuml
 hide footbox
 
+class Client {
+    +main(): void
+}
+
+class Context {
+    -strategy: Strategy
+    +setStrategy(strategy: Strategy): void
+    +executeStrategy(): void
+}
+
 interface EnemyBehavior {
     +execute(): void
 }
@@ -23,6 +33,11 @@ class Enemy {
     +performAction(): void
 }
 
+Client --> Context
+Client ..|> FleeBehavior
+Client ..|> PatrolBehavior
+Client ..|> AttackBehavior
+Context *--> EnemyBehavior
 Enemy *-- EnemyBehavior
 
 @enduml
