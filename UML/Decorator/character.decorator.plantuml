@@ -1,0 +1,46 @@
+@startuml
+hide footbox
+
+class Character {
+    +name: String
+    +Character(name: String)
+    +getDescription(): String
+    +attack(): void
+}
+
+interface CharacterComponent {
+    +getDescription(): String
+    +attack(): void
+}
+
+class BasicCharacter implements CharacterComponent {
+    +name: String
+    +BasicCharacter(name: String)
+    +getDescription(): String
+    +attack(): void
+}
+
+abstract class CharacterDecorator implements CharacterComponent {
+    protected -decoratedCharacter: CharacterComponent
+    +CharacterDecorator(character: CharacterComponent)
+    +getDescription(): String
+    +attack(): void
+}
+
+class FirePowerDecorator extends CharacterDecorator {
+    +FirePowerDecorator(character: CharacterComponent)
+    +getDescription(): String
+    +attack(): void
+    +addFirePower(): void
+}
+
+class InvisibilityDecorator extends CharacterDecorator {
+    +InvisibilityDecorator(character: CharacterComponent)
+    +getDescription(): String
+    +attack(): void
+    +addInvisibility(): void
+}
+
+Character *-- CharacterComponent
+
+@enduml

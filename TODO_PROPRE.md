@@ -78,8 +78,8 @@ Le pattern Composite permet de composer des objets en structures arborescentes p
 Le pattern Decorator attache dynamiquement des responsabilités supplémentaires à un objet. Il fournit une alternative flexible à la sous-classes pour étendre les fonctionnalités.
 
 ### Pertinence et Exemple
-- **Amélioration des armes** : Par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des dégâts de feu ou de poison en utilisant des décorateurs comme `FireSwordDecorator` ou `PoisonSwordDecorator`.
-- **Personnalisation des personnages** : Ajouter des décorateurs pour des compétences ou des pouvoirs spéciaux sans modifier la classe de base du personnage.
+- 🟨 **Amélioration des armes** : Par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des dégâts de feu ou de poison en utilisant des décorateurs comme `FireSwordDecorator` ou `PoisonSwordDecorator`.
+- 🟨 **Personnalisation des personnages** : Ajouter des décorateurs pour des compétences ou des pouvoirs spéciaux sans modifier la classe de base du personnage.
 
 ## Façade
 
