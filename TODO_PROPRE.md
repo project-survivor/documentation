@@ -15,8 +15,8 @@ Dans un jeu comme "Vampire Survivor", il peut être utilisé pour les gestionnai
 Le pattern Factory Method définit une interface pour créer un objet, mais laisse les sous-classes décider de la classe à instancier.
 
 ### Pertinence et Exemple
-✅ - **Création d'ennemis** : Par exemple, un `EnemyFactory` pourrait créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
-✅ - **Création de sorts / projectiles** : Une `SpellFactory` pourrait créer différents types de sorts (flèches, boules de feu, etc.) utilisés par les personnages ou ennemis.
+- ✅ **Création d'ennemis** : Par exemple, un `EnemyFactory` pourrait créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
+- ✅ **Création de sorts / projectiles** : Une `SpellFactory` pourrait créer différents types de sorts (flèches, boules de feu, etc.) utilisés par les personnages ou ennemis.
 
 ## Abstract Factory
 
@@ -24,7 +24,7 @@ Le pattern Factory Method définit une interface pour créer un objet, mais lais
 Le pattern Abstract Factory fournit une interface pour créer des familles d'objets liés ou dépendants sans spécifier leurs classes concrètes.
 
 ### Pertinence et Exemple
-✅ - **Création de personnages** : Une Abstract Factory pourrait être utilisée pour créer des personnages (humain, elfe, orc) et leurs équipements (épée, bouclier, armure) de manière cohérente.
+- ✅ **Création de personnages** : Une Abstract Factory pourrait être utilisée pour créer des personnages (humain, elfe, orc) et leurs équipements (épée, bouclier, armure) de manière cohérente.
 - **Environnements de jeu** : Pour créer des ensembles d'éléments d'environnement (arbres, bâtiments, obstacles) adaptés à différents thèmes (forêt, désert, ville).
 
 ## Builder
@@ -42,7 +42,7 @@ Le pattern Builder sépare la construction d'un objet complexe de sa représenta
 Le pattern Prototype spécifie les types d'objets à créer en utilisant une instance prototype et crée de nouveaux objets en copiant ce prototype.
 
 ### Pertinence et Exemple
-✅ - **Clonage d'ennemis** : Pour créer rapidement des ennemis similaires sans répéter le processus d'initialisation. Par exemple, un prototype de vampire pourrait être cloné pour créer de nouveaux vampires avec des attributs légèrement modifiés.
+- ✅ **Clonage d'ennemis** : Pour créer rapidement des ennemis similaires sans répéter le processus d'initialisation. Par exemple, un prototype de vampire pourrait être cloné pour créer de nouveaux vampires avec des attributs légèrement modifiés.
 - **Création d'objets magiques** : Des objets comme des potions ou des armes magiques peuvent être clonés à partir de prototypes avec des variations minimes.
 
 ## Adapter
