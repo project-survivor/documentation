@@ -1,22 +1,48 @@
 @startuml
-hide footbox
-
 class Game {
-    -state: GameState
-    +createMemento(): Memento
-    +restoreMemento(memento: Memento): void
+    - state: String
+    + setState(state: String)
+    + save(): GameMemento
+    + restore(m: GameMemento)
 }
 
-class GameState {
-    +getState(): Object
+class GameMemento {
+    - state: String
+    + GameMemento(state: String)
+    + getState(): String
 }
 
-class Memento {
-    -state: Object
-    +getState(): Object
+class Player {
+    - state: String
+    + setState(state: String)
+    + save(): PlayerMemento
+    + restore(m: PlayerMemento)
 }
 
-Game *-- Memento : creates
-Game o-- GameState : contains
+Player +-- PlayerMemento : prout class
+
+class PlayerMemento {
+    - state: String
+    + PlayerMemento(state: String)
+    + getState(): String
+}
+
+class Caretaker {
+    - game: Game
+    - player: Player
+    - gameHistory: List<GameMemento>
+    - playerHistory: List<PlayerMemento>
+    + saveGameState()
+    + savePlayerState()
+    + undoGameState()
+    + undoPlayerState()
+}
+
+Game --> GameMemento
+Player --> PlayerMemento
+Caretaker --> Game
+Caretaker --> Player
+Caretaker --> GameMemento
+Caretaker --> PlayerMemento
 
 @enduml

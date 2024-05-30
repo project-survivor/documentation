@@ -213,9 +213,9 @@ Le pattern State permet à un objet de modifier son comportement lorsque son ét
 
 ## Memento
 
-Le pattern Memento capture et externalise l'état interne d'un objet sans violer l'encapsulation, permettant à l'objet de revenir à cet état plus tard.
+Le pattern Memento capture et externalise l'état interne d'un objet sans violer l'encapsulation, permettant à l'objet de revenir à cet état plus tard. Utile pour implémenter une fonctionnalité annuler (retour en arrière), mais est également indispensable pour les transactions —> faire un snapchot, qui permet de faire un backup et de revenir à un état intérieur. Peut être utile aussi pour la sérialisation en C#.
 
------------TODO------------
+### 
 
 ## Mediator 
 
