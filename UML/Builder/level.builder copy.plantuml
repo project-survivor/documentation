@@ -1,0 +1,55 @@
+@startuml
+hide footbox
+
+class GameLevel {
+    -enemies: List<String>
+    -items: List<String>
+    -decorations: List<String>
+    +GameLevel()
+    +addEnemy(enemy: String): void
+    +addItem(item: String): void
+    +addDecoration(decoration: String): void
+    +display(): void
+}
+
+interface LevelBuilder {
+    +reset(): void
+    +addEnemies(enemies: List<String>): LevelBuilder
+    +addItems(items: List<String>): LevelBuilder
+    +addDecorations(decorations: List<String>): LevelBuilder
+    +build(): GameLevel
+}
+
+class ConcreteLevelBuilder1 {
+    -level: GameLevel
+    +ConcreteLevelBuilder1()
+    +reset(): void
+    +addEnemies(enemies: List<String>): ConcreteLevelBuilder1
+    +addItems(items: List<String>): ConcreteLevelBuilder1
+    +addDecorations(decorations: List<String>): ConcreteLevelBuilder1
+    +build(): GameLevel
+}
+
+class ConcreteLevelBuilder2 {
+    -level: GameLevel
+    +ConcreteLevelBuilder2()
+    +reset(): void
+    +addEnemies(enemies: List<String>): ConcreteLevelBuilder2
+    +addItems(items: List<String>): ConcreteLevelBuilder2
+    +addDecorations(decorations: List<String>): ConcreteLevelBuilder2
+    +build(): GameLevel
+}
+
+class Director {
+    -builder: LevelBuilder
+    +Director(builder: LevelBuilder)
+    +changeBuilder(builder: LevelBuilder): void
+    +make(type: String): GameLevel
+}
+
+GameLevel *-- LevelBuilder
+LevelBuilder <|.. ConcreteLevelBuilder1
+LevelBuilder <|.. ConcreteLevelBuilder2
+Director --> LevelBuilder
+
+@enduml

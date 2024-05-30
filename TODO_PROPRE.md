@@ -6,7 +6,7 @@ Le pattern Singleton garantit qu'une classe n'a qu'une seule instance et fournit
 ### Pertinence et Exemple
 Dans un jeu comme "Vampire Survivor", il peut être utilisé pour les gestionnaires de ressources partagées telles que :
 - **Gestionnaire de ressources** : Pour charger et gérer les textures, sons et autres ressources de manière centralisée.
-- **Gestionnaire de configuration** : Pour lire et écrire des paramètres de jeu à partir d'un fichier JSON ou d'une base de données.
+- 🟨 **Gestionnaire de configuration** : Pour lire et écrire des paramètres de jeu à partir d'un fichier JSON ou d'une base de données.
 - **Gestionnaire de scènes** : Pour contrôler la transition entre différentes scènes du jeu, comme le menu principal et les niveaux du jeu.
 
 ## Factory Method
@@ -33,8 +33,8 @@ Le pattern Abstract Factory fournit une interface pour créer des familles d'obj
 Le pattern Builder sépare la construction d'un objet complexe de sa représentation afin que le même processus de construction puisse créer différentes représentations.
 
 ### Pertinence et Exemple
-- **Création de personnages complexes** : Utiliser un `CharacterBuilder` pour créer un personnage avec des attributs comme la force, l'agilité, les compétences, et les équipements, en permettant de construire l'objet étape par étape.
-- **Construction de niveaux** : Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant des ennemis, des objets, et des décorations de manière structurée.
+- 🟨 **Création de personnages complexes** : Utiliser un `CharacterBuilder` pour créer un personnage avec des attributs comme la force, l'agilité, les compétences, et les équipements, en permettant de construire l'objet étape par étape.
+- 🟨 **Construction de niveaux** : Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant des ennemis, des objets, et des décorations de manière structurée.
 
 ## Prototype
 

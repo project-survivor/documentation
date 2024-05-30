@@ -1,0 +1,60 @@
+@startuml
+hide footbox
+
+class Character {
+    -strength: int
+    -agility: int
+    -skills: String[]
+    -equipment: String
+    +Character()
+    +setStrength(strength: int): void
+    +setAgility(agility: int): void
+    +setSkills(skills: String[]): void
+    +setEquipment(equipment: String): void
+    +display(): void
+}
+
+interface Builder {
+    +reset(): void
+    +setStrength(strength: int): Builder
+    +setAgility(agility: int): Builder
+    +setSkills(skills: String[]): Builder
+    +setEquipment(equipment: String): Builder
+    +build(): Character
+}
+
+class CharacterBuilder1 {
+    -character: Character
+    +CharacterBuilder1()
+    +reset(): void
+    +setStrength(strength: int): CharacterBuilder1
+    +setAgility(agility: int): CharacterBuilder1
+    +setSkills(skills: String[]): CharacterBuilder1
+    +setEquipment(equipment: String): CharacterBuilder1
+    +build(): Character
+}
+
+class CharacterBuilder2 {
+    -character: Character
+    +CharacterBuilder2()
+    +reset(): void
+    +setStrength(strength: int): CharacterBuilder2
+    +setAgility(agility: int): CharacterBuilder2
+    +setSkills(skills: String[]): CharacterBuilder2
+    +setEquipment(equipment: String): CharacterBuilder2
+    +build(): Character
+}
+
+class Director {
+    -builder: Builder
+    +Director(builder: Builder)
+    +changeBuilder(builder: Builder): void
+    +make(type: String): Character
+}
+
+Character *-- Builder
+Builder <|.. CharacterBuilder1
+Builder <|.. CharacterBuilder2
+Director --> Builder
+
+@enduml
