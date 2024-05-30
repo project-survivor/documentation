@@ -1,0 +1,63 @@
+@startuml
+interface Command {
+    + execute()
+}
+
+class AttackCommand implements Command {
+    - player: Player
+    - params: Params
+    + AttackCommand(params Params, player: Player)
+    + execute()
+}
+
+class MoveCommand implements Command {
+    - player: Player
+    - param: Param
+    + MoveCommand(params Params,player: Player)
+    + execute()
+}
+
+class UseItemCommand implements Command {
+    - player: Player
+    - param: Param
+    + UseItemCommand(params Params, player: Player)
+    + execute()
+}
+
+class Character {
+    + attack(damage: int, target: Enemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item, target: Player)
+}
+
+class Invoker {
+    - command: Command
+    + setCommand(command: Command)
+    + executeCommand()
+}
+
+class Client {
+    + createCommands(player: Player)
+}
+
+class CommandHistory {
+    - history: Command[]
+    + push(c: Command)
+    + pop(c: Command)
+}
+
+Invoker o-- Command
+Invoker --> CommandHistory
+CommandHistory *--> Command
+
+AttackCommand --> Character
+MoveCommand --> Character
+UseItemCommand --> Character
+
+Client --> AttackCommand
+Client --> MoveCommand
+Client --> UseItemCommand
+Client --> Invoker
+Client --> Character
+
+@enduml

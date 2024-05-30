@@ -133,7 +133,7 @@ Le pattern Strategy définit une famille d'algorithmes, encapsule chaque algorit
 Le pattern Command encapsule une requête en tant qu'objet, permettant de paramétrer les clients avec des files d'attente, des demandes et des opérations réversibles.
 
 ### Pertinence et Exemple
-- **Actions du joueur** : Encapsuler les actions du joueur (attaquer, déplacer, utiliser un objet) en commandes, permettant de les mettre en file d'attente, de les annuler ou de les répéter.
+- 🟨 **Actions du joueur** : Encapsuler les actions du joueur (attaquer, déplacer, utiliser un objet) en commandes, permettant de les mettre en file d'attente, de les annuler ou de les répéter.
 - **Système de tutoriel** : Enregistrer et rejouer des actions pour guider le joueur à travers les étapes du tutoriel.
 
 ## State
