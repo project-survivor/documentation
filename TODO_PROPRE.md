@@ -96,8 +96,8 @@ Le pattern Façade fournit une interface unifiée à un ensemble d'interfaces da
 Le pattern Flyweight utilise le partage pour prendre en charge efficacement un grand nombre d'objets de granularité fine.
 
 ### Pertinence et Exemple
-- **Optimisation des ressources** : Utiliser des flyweights pour des objets fréquents comme des particules, des collectibles (pièces d'or, points d'expérience), et des ennemis pour minimiser la consommation de mémoire en partageant les données communes.
-- **Textures et sprites** : Réutiliser les mêmes textures pour plusieurs instances d'objets visuels.
+- 🟨 **Optimisation des ressources** : Utiliser des flyweights pour des objets fréquents comme des particules, des collectibles (pièces d'or, points d'expérience), et des ennemis pour minimiser la consommation de mémoire en partageant les données communes.
+- 🟨 **Textures et sprites** : Réutiliser les mêmes textures pour plusieurs instances d'objets visuels.
 
 
 ## Proxy

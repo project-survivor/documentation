@@ -1,0 +1,22 @@
+@startuml
+hide footbox
+
+actor Player
+participant Client
+participant FlyweightFactory
+participant Flyweight
+participant Context
+
+Player -> Client: main()
+Client -> FlyweightFactory: getFlyweight("orc")
+FlyweightFactory -> FlyweightFactory: check cache
+FlyweightFactory -> Flyweight: new Flyweight("orc")
+FlyweightFactory --> Client: return Flyweight
+Client -> Context: new Context("orc", "location_1", factory)
+Client -> Context: new Context("orc", "location_2", factory)
+Client -> Context: new Context("orc", "location_3", factory)
+Context -> Flyweight: operation("location_1")
+Context -> Flyweight: operation("location_2")
+Context -> Flyweight: operation("location_3")
+
+@enduml

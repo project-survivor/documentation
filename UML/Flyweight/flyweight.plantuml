@@ -1,26 +1,31 @@
 @startuml
 hide footbox
 
-class Projectile {
-    +positionX: int
-    +positionY: int
-    +damage: int
-    +texture: Texture
-    +Projectile(damage: int, texture: Texture)
-    +draw(positionX: int, positionY: int): void
+class Flyweight {
+    -type: String
+    -image: String
+    +Flyweight(type: String, image: String)
+    +operation(uniqueState: String): void
 }
 
-class ProjectileFactory {
-    -projectiles: Map<String, Projectile>
-    +getProjectile(damage: int, texture: Texture): Projectile
+class FlyweightFactory {
+    -cache: Map<String, Flyweight>
+    +getFlyweight(type: String): Flyweight
 }
 
-class Texture {
-    +data: byte[]
-    +Texture(data: byte[])
+class Context {
+    -uniqueState: String
+    -flyweight: Flyweight
+    +Context(type: String, uniqueState: String)
+    +operation(): void
 }
 
-Projectile --> Texture
-ProjectileFactory o-- Projectile
+class Client {
+    +main(): void
+}
+
+Client --> Context
+Context --> Flyweight
+FlyweightFactory --> Flyweight
 
 @enduml
