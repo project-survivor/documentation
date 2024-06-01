@@ -1,15 +1,53 @@
-# **Explications de chaque Design Pattern - Vampire Survivor**
+# **Design Pattern - Vampire Survivor**
 
-### **Table des matières**
+## **Table des matières**
 - [I. Pattern de création](#i-pattern-de-création)
+    - [Singleton](#singleton)
+        - [Gestionnaire de configuration](#gestionnaire-de-configuration)
+    - [Factory Method](#factory-method)
+        - [Création des armes](#création-des-armes)
+        - [Création des sorts](#création-des-sorts)
+        - [Création des ennemis](#création-des-ennemis)
+        - [Création des collectibles](#création-des-collectibles)
     - [Abstract Factory](#abstract-factory)
         - [Création du personnage](#création-du-personnage)
         - [Création des équipements](#création-des-équipements)
-        - [Création des sorts](#création-des-sorts)
-    - [Factory Method](#factory-method)
-        - [Création des armes](#création-des-armes)
+    - [Builder](#builder)
+        - [Création de personnages complexes](#création-de-personnages-complexes)
+        - [Construction de niveaux](#construction-de-niveaux)
+    - [Prototype](#prototype)
+        - [Clone des ennemis](#clone-des-ennemis)
 - [II. Pattern structurel](#ii-pattern-structurel)
-- [III.Pattern comportemental](#iii-pattern-comportemental)
+    - [Decorator](#decorator)
+        - [Personnalisation des personnages](#personnalisation-des-personnages)
+        - [Ajouter des caractéristiques aux sorts](#ajouter-des-caractéristiques-aux-sorts)
+        - [Ajouter des améliorations à des armes](#ajouter-des-améliorations-à-des-armes)
+    - [Flyweight](#flyweight)
+        - [Textures et sprites](#textures-et-sprites)
+        - [Ennemis](#ennemis)
+    - [Proxy](#proxy)
+        - [Sauvegarde de la configuration](#sauvegarde-de-la-configuration)
+- [III. Pattern comportemental](#iii-pattern-comportemental)
+    - [Observer](#observer)
+        - [Systèmes d'évènements de jeu](#systèmes-dévènements-de-jeu)
+    - [Strategy](#strategy)
+        - [Stratégie d'ennemie](#stratégie-dennemie)
+        - [Gestion des armes](#gestion-des-armes)
+    - [Command](#command)
+        - [Actions du joueur](#actions-du-joueur)
+    - [State](#state)
+        - [Etat des personnages](#etat-des-personnages)
+        - [Etat de phase de niveau](#etat-de-phase-de-niveau)
+    - [Visitor](#visitor)
+        - [Visiteur de dégats](#visiteur-de-dégats)
+    - [Memento](#memento)
+        - [Sauvegarde des états du jeu](#sauvegarde-des-états-du-jeu)
+    - [Mediator](#mediator)
+        - [Médiateur du jeu](#médiateur-du-jeu)
+    - [Chain of Responsibility](#chain-of-responsibility)
+        - [Requête de jeu](#requête-de-jeu)
+    - [Template Method](#template-method)
+        - [Génération de niveaux](#génération-de-niveaux)
 
 # I. Pattern de création
 
@@ -282,3 +320,7 @@ Le but est de définir un processus de génération de niveaux différent niveau
 Le pattern Iterator fournit un moyen d'accéder séquentiellement aux éléments d'un agrégat sans exposer sa représentation sous-jacente.
 
 On se sert de collection simple donc il serait exégaré d'utiliser ce pattern dans notre cas.
+
+---
+
+Réalisé par Julien, Isamet, et Joé.
