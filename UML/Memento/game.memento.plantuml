@@ -1,4 +1,5 @@
 @startuml
+
 class Game {
     - state: String
     + setState(state: String)
@@ -19,7 +20,8 @@ class Player {
     + restore(m: PlayerMemento)
 }
 
-Player +-- PlayerMemento : prout class
+Player +-- PlayerMemento : inner class
+Game +-- GameMemento : inner class 
 
 class PlayerMemento {
     - state: String
@@ -42,7 +44,7 @@ Game --> GameMemento
 Player --> PlayerMemento
 Caretaker --> Game
 Caretaker --> Player
-Caretaker --> GameMemento
-Caretaker --> PlayerMemento
+Caretaker o--> GameMemento
+Caretaker o--> PlayerMemento
 
 @enduml

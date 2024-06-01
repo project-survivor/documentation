@@ -1,0 +1,43 @@
+@startuml
+title Visitor Pattern for Game Interactions
+
+interface Visitor {
+    + visit(IEnemy e): void
+    + visit(ItemA i): void
+    + visit(ItemB i): void
+}
+
+interface Element {
+    + accept(v: Visitor): void
+}
+
+class EnemyA implements Element {
+    + accept(v: Visitor): void
+    + takeDamage(damage: int): void
+}
+
+class EnemyB implements Element {
+    + accept(v: Visitor): void
+    + takeDamage(damage: int): void
+}
+
+class ItemA implements Element {
+    + accept(v: Visitor): void
+    + use(): void
+}
+
+class ItemB implements Element {
+    + accept(v: Visitor): void
+    + use(): void
+}
+
+class DamageVisitor implements Visitor {
+    + visit(IEnemy e): void
+    + visit(ItemA i): void
+    + visit(ItemB i): void
+}
+
+Client -> Element : element.accept(visitor)
+Element -> Visitor : v.visit(this)
+
+@enduml

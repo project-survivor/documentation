@@ -1,0 +1,29 @@
+@startuml
+title State Pattern for Character States
+
+class Context {
+    - state: State
+    + Context(initialState: State)
+    + setState(state: State): void
+    + performAction(): void
+}
+
+interface State {
+    + performAction(): void
+}
+
+class NormalState implements State {
+    + performAction(): void
+}
+
+class PoisonedState implements State {
+    + performAction(): void
+}
+
+class EnragedState implements State {
+    + performAction(): void
+}
+
+Context o--> State
+
+@enduml

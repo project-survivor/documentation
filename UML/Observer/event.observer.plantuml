@@ -1,0 +1,30 @@
+@startuml
+title Observer Pattern for Game Event System
+
+interface ISubscriber {
+    + update(event: String, context: Object): void
+}
+
+class GameEventPublisher {
+    - subscribers: ISubscriber[]
+    + subscribe(subscriber: ISubscriber): void
+    + unsubscribe(subscriber: ISubscriber): void
+    + notifySubscribers(event: String, context: Object): void
+    + changeState(event: String, context: Object): void
+}
+
+class EquipmentSystem implements ISubscriber {
+    + update(event: String, context: Object): void
+}
+
+class CharacterSystem implements ISubscriber {
+    + update(event: String, context: Object): void
+}
+
+class EnemySystem implements ISubscriber {
+    + update(event: String, context: Object): void
+}
+
+GameEventPublisher o--> ISubscriber
+
+@enduml

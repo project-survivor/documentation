@@ -1,0 +1,32 @@
+@startuml
+title Proxy with Singleton for JSONConfigManager Access
+
+interface IConfiguration {
+    + getConfig(key: String): String
+    + setConfig(key: String, value: String): void
+}
+
+class JSONConfigManager implements IConfiguration {
+    - static instance: JSONConfigManager
+    - config: Map<String, String>
+    + getInstance(): JSONConfigManager
+    + getConfig(key: String): String
+    + setConfig(key: String, value: String): void
+}
+
+class ConfigurationProxy implements IConfiguration {
+    - realConfig: JSONConfigManager
+    + ConfigurationProxy()
+    + checkAccess(): Boolean
+    + getConfig(key: String): String
+    + setConfig(key: String, value: String): void
+}
+
+class Client {
+    + main(args: String[]): void
+}
+
+Client --> IConfiguration
+ConfigurationProxy --> JSONConfigManager
+
+@enduml

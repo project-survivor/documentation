@@ -36,10 +36,6 @@ class Invoker {
     + executeCommand()
 }
 
-class Client {
-    + createCommands(player: Player)
-}
-
 class CommandHistory {
     - history: Command[]
     + push(c: Command)
@@ -53,11 +49,5 @@ CommandHistory *--> Command
 AttackCommand --> Character
 MoveCommand --> Character
 UseItemCommand --> Character
-
-Client --> AttackCommand
-Client --> MoveCommand
-Client --> UseItemCommand
-Client --> Invoker
-Client --> Character
 
 @enduml

@@ -1,16 +1,6 @@
 @startuml
 hide footbox
 
-class Client {
-    +main(): void
-}
-
-class Context {
-    -strategy: ShootingStrategy
-    +setStrategy(strategy: ShootingStrategy): void
-    +executeStrategy(): void
-}
-
 interface ShootingStrategy {
     +shoot(): void
 }
@@ -29,10 +19,6 @@ class Weapon {
     +shoot(): void
 }
 
-Client --> Context
-Client ..|> StraightShooting
-Client ..|> FanShooting
-Context *--> ShootingStrategy
-Weapon *-- ShootingStrategy
+Weapon o--> ShootingStrategy
 
 @enduml

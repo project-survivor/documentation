@@ -1,0 +1,39 @@
+@startuml
+title Enemy Flyweight Pattern
+
+class EnemyType {
+    - name: String
+    - speed: int
+    - health: int
+    - damage: int
+    - sprite: String
+    + EnemyType(name: String, speed: int, health: int, damage: int, sprite: String)
+    + attack(): void
+}
+
+class Enemy {
+    + x: int
+    + y: int
+    + type: EnemyType
+    + Enemy(x: int, y: int, type: EnemyType)
+    + attack(): void
+    + move(newX: int, newY: int): void
+}
+
+class EnemyFactory {
+    - enemyTypes: EnemyType[]
+    + getEnemyType(name: String, speed: int, health: int, damage: int, sprite: String): EnemyType
+}
+
+class GameWorld {
+    - enemies: Enemy[]
+    + addEnemy(x: int, y: int, name: String, speed: int, health: int, damage: int, sprite: String): void
+    + render(): void
+}
+
+EnemyFactory o--> EnemyType
+GameWorld o--> Enemy
+GameWorld --> EnemyFactory
+Enemy --> EnemyType
+
+@enduml

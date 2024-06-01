@@ -1,0 +1,29 @@
+@startuml
+title State Pattern for Level Phases
+
+class LevelContext {
+    - state: LevelState
+    + LevelContext(initialState: LevelState)
+    + setState(state: LevelState): void
+    + update(): void
+}
+
+interface LevelState {
+    + update(): void
+}
+
+class ExplorationState implements LevelState {
+    + update(): void
+}
+
+class CombatState implements LevelState {
+    + update(): void
+}
+
+class BossState implements LevelState {
+    + update(): void
+}
+
+LevelContext o--> LevelState
+
+@enduml

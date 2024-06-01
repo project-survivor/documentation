@@ -140,7 +140,7 @@ Pour chacun de ces sorts, un élément pourra lui être affecté afin de modifie
 
 ### Ajouter des améliorations à des armes 
 
-On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des enchantements (dégats bonus) de feu, d'eau, de terre et d'air et d'air.
+On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des enchantements (dégats bonus) de feu, d'eau, de terre et d'air et d'air ainsi que des effets associés.
 
 > Fichier UML : [weapon.decorator](UML/Decorator/weapon.decorator.plantuml)
 
@@ -148,26 +148,31 @@ On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une
 
 Le pattern Façade fournit une interface unifiée à un ensemble d'interfaces dans un sous-système. Il définit une interface de haut niveau qui rend le sous-système plus facile à utiliser.
 
------------TODO------------
-
+On ne va pas utiliser ce pattern car on n'a pas besoin de simplifier l'interface d'un ensemble d'interfaces.
 
 ## Flyweight
 
 Le pattern Flyweight utilise le partage pour prendre en charge efficacement un grand nombre d'objets de granularité fine.
 
-- **Optimisation des ressources** : Utiliser des flyweights pour des objets fréquents comme des particules, des collectibles (pièces d'or, points d'expérience), et des ennemis pour minimiser la consommation de mémoire en partageant les données communes.
 - **Textures et sprites** : Réutiliser les mêmes textures pour plusieurs instances d'objets visuels.
 
-> Fichier UML : [flyweight](UML/Flyweight/flyweight.plantuml) : le fichier est générique et ne correspond pas à un exemple précis.
+> Fichier UML générique : [flyweight](UML/Flyweight/flyweight.plantuml) : le fichier est générique et ne correspond pas à un exemple précis.
 
 > Diagramme de séquence : [flyweight.sequence](UML/Flyweight/flyweight.sequence.plantuml)
 
+- **Ennemis** : Réutiliser les mêmes ennemyType (état intrinsèque) pour plusieurs instances d'ennemis.
+
+> Fichier UML : [ennemy.flyweight](UML/Flyweight/ennemy.flyweight.plantuml)
 
 ## Proxy
 
 Le pattern Proxy fournit un substitut ou un placeholder pour un autre objet afin de contrôler l'accès à celui-ci.
 
------------TODO------------
+### Sauvegarde de la configuration
+
+Utiliser un proxy pour sauvegarder la configuration du jeu dans un fichier JSON qui peut servir de pare-feu en controllant les accès, donc le client ne peut pas accéder directement au fichier JSON / base de données. On pourra utiliser ce proxy pour gérer les logs et si on fait une requete pour la sauvegarde on pourra la sauvegarder pour pouvoir la re-éxecuter en cas de soucis. Mais également on pourra en mettre en cache les requêtes récurrentes pour éviter de les refaire. 
+
+> Fichier UML : [save.proxy](UML/Proxy/save.proxy.plantuml)
 
 # III. Pattern comportemental
 
@@ -175,7 +180,11 @@ Le pattern Proxy fournit un substitut ou un placeholder pour un autre objet afin
 
 Le pattern Observer définit une relation de dépendance un-à-plusieurs entre des objets, de sorte que lorsque l'un des objets change d'état, tous ses dépendants en sont informés et mis à jour automatiquement.
 
------------TODO------------
+### Systèmes d'évènements de jeu
+
+Pour gérer les notifications de changement d'état des objets de jeu, comme les équipements qui changent en fonction des bonus ou les personnages qui réagissent aux changements de l'environnement, ou les personnages et ennemis.
+
+> Fichier UML : [event.observer](UML/Observer/event.observer.plantuml)
 
 ## Strategy
 
@@ -191,7 +200,6 @@ Utiliser différentes stratégies de tir pour des armes variées (tir en ligne d
 
 > Fichier UML : [weapon.strategy](UML/Strategy/weapon.strategy.plantuml)
 
-
 ## Command
 
 Le pattern Command encapsule une requête en tant qu'objet, permettant de paramétrer les clients avec des files d'attente, des demandes et des opérations réversibles. Si on a besoin d’une implémentation de undo/redo (reversible operations), on utilise ce pattern car c’est dynamique, au runtime, on peut choisir exécuter une commande Turn on TV mais 5 minutes après on peut turn off la TV. 
@@ -206,17 +214,38 @@ Encapsuler les actions du joueur (attaquer, déplacer, utiliser un objet) en com
 
 Le pattern State permet à un objet de modifier son comportement lorsque son état change. Il apparaît comme si l'objet changeait de classe.
 
------------TODO------------
+### Etat des personnages
+
+Gérer les états d'un personnage comme normal, empoisonné, enragé, etc., en modifiant son comportement en fonction de son état actuel.
+
+> Fichier UML : [character.state](UML/State/character.state.plantuml)
+
+### Etat de phase de niveau
+
+Gérer les différentes phases d'un niveau de jeu (exploration, combat, boss) en changeant l'état de la scène.
+
+> Fichier UML : [level.state](UML/State/level.state.plantuml)
 
 ## Visitor
 
------------TODO------------
+On utilise ce pattern lorsque on doit faire un certain type d’opérations sur un groupe d’objets (la plupart du temps complexe) sans devoir altérer tout le code. 
+
+
+### Visiteur de dégats
+
+Différents types d'ennemis peuvent être visités par un DamageVisitor qui va appliquer des dégâts selon l'objet par lequel ils sont touchés (ItemA, ItemB)
+
+> Fichier UML : [damage.visitor](UML/Visitor/damage.visitor.plantuml)
 
 ## Memento
 
 Le pattern Memento capture et externalise l'état interne d'un objet sans violer l'encapsulation, permettant à l'objet de revenir à cet état plus tard. Utile pour implémenter une fonctionnalité annuler (retour en arrière), mais est également indispensable pour les transactions —> faire un snapchot, qui permet de faire un backup et de revenir à un état intérieur. Peut être utile aussi pour la sérialisation en C#.
 
-### 
+### Sauvegarde des états du jeu
+
+Il permet de sauvegarder l'état du jeu à des moments critiques et de restaurer cet état plus tard, par exemple pour des fonctionnalités de sauvegarde/chargement ou de retour en arrière.
+
+> Fichier UML : [game.memento](UML/Memento/game.memento.plantuml)
 
 ## Mediator 
 
