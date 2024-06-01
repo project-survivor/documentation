@@ -1,47 +1,34 @@
 @startuml
-hide footbox
 
-interface RenderEngine {
-    {abstract} +render(): void
+interface Renderer {
+    + render(name: String)
 }
 
-class OpenGLRenderer implements RenderEngine {
-    +render(): void
+class Renderer2D implements Renderer {
+    + render(name: String)
 }
 
-class DirectXRenderer implements RenderEngine {
-    +render(): void
+class Renderer3D implements Renderer {
+    + render(name: String)
 }
 
-abstract class Game {
-    -renderEngine: RenderEngine
-    +Game(renderEngine: RenderEngine)
-    {abstract} +play(): void
+abstract class GameObject {
+    - renderer: Renderer
+    + GameObject(renderer: Renderer)
+    + render()
 }
 
-class WindowsGame extends Game {
-    +WindowsGame(renderEngine: RenderEngine)
-    +play(): void
+
+class Enemy extends GameObject {
+    + Enemy(renderer: Renderer)
+    + render()
 }
 
-class MacOSGame extends Game {
-    +MacOSGame(renderEngine: RenderEngine)
-    +play(): void
+class Collectible extends GameObject {
+    + Collectible(renderer: Renderer)
+    + render()
 }
 
-class ConsoleGame extends Game {
-    +ConsoleGame(renderEngine: RenderEngine)
-    +play(): void
-}
-
-RenderEngine <|.. OpenGLRenderer
-RenderEngine <|.. DirectXRenderer
-Game <|-- WindowsGame
-Game <|-- MacOSGame
-Game <|-- ConsoleGame
-
-WindowsGame *-- RenderEngine
-MacOSGame *-- RenderEngine
-ConsoleGame *-- RenderEngine
+GameObject --> Renderer
 
 @enduml

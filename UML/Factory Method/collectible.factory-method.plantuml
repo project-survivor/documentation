@@ -1,0 +1,38 @@
+@startuml
+
+title Collectible Factory Method
+
+interface ICollectible {
+    +collect()
+}
+
+class Coin {
+    +collect()
+}
+
+class Experience {
+    +collect()
+}
+
+abstract class ICollectibleFactory {
+    +createCollectible()
+}
+
+class CoinFactory {
+    +createCollectible()
+}
+
+class ExperienceFactory {
+    +createCollectible()
+}
+
+ICollectible <|-- Coin
+ICollectible <|-- Experience
+
+ICollectibleFactory <|-- CoinFactory
+ICollectibleFactory <|-- ExperienceFactory
+
+ICollectibleFactory ..> ICollectible : creates
+
+@enduml
+

@@ -1,0 +1,59 @@
+@startuml
+
+title Weapon Decorator Pattern
+
+abstract class WeaponDecorator implements IWeapon {
+    - decoratedWeapon: IWeapon
+    + WeaponDecorator(weapon: IWeapon)
+    + attack1()
+    + attack2()
+}
+
+interface IWeapon {
+    + attack1()
+    + attack2()
+}
+
+
+class FireEnchantmentDecorator extends WeaponDecorator {
+    + fireDamage : int
+    + attack1()
+    + attack2()
+}
+
+class WaterEnchantmentDecorator extends WeaponDecorator {
+    + waterDamage : int
+    + attack1()
+    + attack2()
+}
+
+class GroundEnchantmentDecorator extends WeaponDecorator {
+    + groundDamage : int
+    + attack1()
+    + attack2()
+}
+
+class AirEnchantmentDecorator extends WeaponDecorator {
+    + airDamage : int
+    + attack1()
+    + attack2()
+}
+
+class Sword implements IWeapon {
+    + attack1()
+    + attack2()
+}
+
+class Bow implements IWeapon {
+    + attack1()
+    + attack2()
+}
+
+class Wand implements IWeapon {
+    + attack1()
+    + attack2()
+}
+
+WeaponDecorator *--> IWeapon 
+
+@enduml

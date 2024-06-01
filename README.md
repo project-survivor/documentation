@@ -41,11 +41,17 @@ Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe (mage, chasseur,
 
 > Fichier UML : [spell.factory-method](UML/Factory%20Method/spell.factory-method.plantuml)
 
-## Création des ennemis 
+### Création des ennemis 
 
 Le but étant de créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
 
 > Fichier UML : [enemy.factory-method](UML/Factory%20Method/enemy.factory-method.plantuml)
+
+### Création des collectibles 
+
+Le joueur pourra ramasser des collectibles comme des pièces d'or ou de l'expérience lui permettant de monter en niveau.
+
+> Fichier UML : [collectible.factory-method](UML/Factory%20Method/collectible.factory-method.plantuml)
 
 
 ## Abstract Factory
@@ -98,22 +104,19 @@ Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant de
 
 Le pattern Adapter permet à des interfaces incompatibles de travailler ensemble en convertissant l'interface d'une classe en une interface attendue par les clients.
 
------------TODO------------
+Dans notre cas, on ne veut pas utiliser ce pattern car on n'a pas besoin de convertir une interface en une autre interface dès le début du projet.
 
 ## Bridge
 
 Le pattern Bridge sépare une abstraction d'une implémentation afin qu'elles puissent évoluer indépendamment.
 
------------TODO------------
+Pas utile, cela pourrait l'être si on souhaitait avoir un jeu en 2D et le même en 3D où les mécanismes de rendu seraient différents
 
 ## Composite
 
 Le pattern Composite permet de composer des objets en structures arborescentes pour représenter des hiérarchies de parties et de tout.
 
------------TODO------------
-
-
-
+Pas utile, cela pourrait l'être si, par exemple, les ennemis étaient regroupés en divisions, armées, etc...
 
 ## Decorator
 
@@ -129,7 +132,7 @@ L'ajout d'un des décorateurs pour des compétences ou des pouvoirs spéciaux sa
 
 Pour chacun de ces sorts, un élément pourra lui être affecté afin de modifier les statistiques/caractéristiques :
 - Feu
-- Glace
+- Eau
 - Terre
 - Air
 
@@ -137,17 +140,15 @@ Pour chacun de ces sorts, un élément pourra lui être affecté afin de modifie
 
 ### Ajouter des améliorations à des armes 
 
-On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des dégâts de feu ou de poison en utilisant des décorateurs comme `FireSwordDecorator` ou `PoisonSwordDecorator`.
+On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des enchantements (dégats bonus) de feu, d'eau, de terre et d'air et d'air.
 
-> Fichier UML : [sword.decorator](UML/Decorator/sword.decorator.plantuml)
+> Fichier UML : [weapon.decorator](UML/Decorator/weapon.decorator.plantuml)
 
 ## Facade
 
 Le pattern Façade fournit une interface unifiée à un ensemble d'interfaces dans un sous-système. Il définit une interface de haut niveau qui rend le sous-système plus facile à utiliser.
 
 -----------TODO------------
-
-
 
 
 ## Flyweight

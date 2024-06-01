@@ -1,13 +1,6 @@
 @startuml
 hide footbox
 
-class Character {
-    +name: String
-    +Character(name: String)
-    +getDescription(): String
-    +attack(): void
-}
-
 interface CharacterComponent {
     +getDescription(): String
     +attack(): void
@@ -41,6 +34,6 @@ class InvisibilityDecorator extends CharacterDecorator {
     +addInvisibility(): void
 }
 
-Character *-- CharacterComponent
+CharacterDecorator *--> CharacterComponent
 
 @enduml

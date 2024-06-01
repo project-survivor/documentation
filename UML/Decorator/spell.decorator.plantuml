@@ -3,57 +3,62 @@
 title Spell Decorator Pattern
 
 interface ISpell {
-    
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
-class ArrowRain {
-    
+class MageSpell implements ISpell {
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
-class PiercingArrow {
-    
+class HunterSpell implements ISpell {
+    +name
+    +damage
+    +cast()
+    +render() 
 }
 
-class MagicOrb {
-    
+class FighterSpell implements ISpell {
+    +name
+    +damage
+    +cast()
+    +render()  
 }
 
-class Avadakedavra {
-    
-}
-
-class ThunderBlade {
-    
-}
-
-class DragonsFury{
-    
-}
-
-abstract class SpellDecorator {
+abstract class SpellDecorator implements ISpell {
     -spell: ISpell
     +SpellDecorator(spell: ISpell)
-    +attack(): void
+    +cast()
+    +render()  
 }
 
 class FireSpellDecorator {
     +FireSpellDecorator(spell: ISpell)
-    +attack(): void
+    +cast()
+    +render() 
 }
 
 class WaterSpellDecorator {
     +WaterSpellDecorator(spell: ISpell)
-    +attack(): void
+    +cast()
+    +render() 
 }
 
 class GroundSpellDecorator {
     +GroundSpellDecorator(spell: ISpell)
-    +attack(): void
+    +cast()
+    +render() 
 }
 
 class AirSpellDecorator {
     +AirSpellDecorator(spell: ISpell)
-    +attack(): void
+    +cast()
+    +render() 
 }
 
 ISpell <--o SpellDecorator
@@ -62,13 +67,5 @@ SpellDecorator <|-- FireSpellDecorator
 SpellDecorator <|-- WaterSpellDecorator
 SpellDecorator <|-- GroundSpellDecorator
 SpellDecorator <|-- AirSpellDecorator
-
-
-ISpell <|.. ArrowRain
-ISpell <|.. PiercingArrow
-ISpell <|.. MagicOrb
-ISpell <|.. Avadakedavra
-ISpell <|.. ThunderBlade
-ISpell <|.. DragonsFury
 
 @enduml
