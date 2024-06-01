@@ -1,0 +1,44 @@
+@startuml
+title Mediator Pattern for Game Systems
+
+interface Mediator {
+    + notify(sender: Object, event: String): void
+}
+
+class ConcreteMediator implements Mediator {
+    - combatSystem: CombatSystem
+    - lootSystem: LootSystem
+    - notificationSystem: NotificationSystem
+    + setCombatSystem(cs: CombatSystem): void
+    + setLootSystem(ls: LootSystem): void
+    + setNotificationSystem(ns: NotificationSystem): void
+    + notify(sender: Object, event: String): void
+}
+
+class CombatSystem {
+    - mediator: Mediator
+    + CombatSystem(m: Mediator): void
+    + attack(): void
+}
+
+class LootSystem {
+    - mediator: Mediator
+    + LootSystem(m: Mediator): void
+    + generateLoot(): void
+}
+
+class NotificationSystem {
+    - mediator: Mediator
+    + NotificationSystem(m: Mediator): void
+    + displayNotification(message: String): void
+}
+
+ConcreteMediator *--> CombatSystem
+ConcreteMediator *--> LootSystem
+ConcreteMediator *--> NotificationSystem
+
+CombatSystem --> Mediator : notify(sender, "attack")
+LootSystem --> Mediator : notify(sender, "lootGenerated")
+NotificationSystem --> Mediator : notify(sender, "displayNotification")
+
+@enduml

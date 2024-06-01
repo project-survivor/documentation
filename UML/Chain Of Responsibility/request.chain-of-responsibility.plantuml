@@ -1,0 +1,48 @@
+@startuml
+title Chain of Responsibility Pattern for User Input to UI Display
+
+interface Handler {
+    + setNext(handler: Handler): Handler
+    + handle(request: Request): void
+}
+
+abstract class BaseHandler implements Handler {
+    - next: Handler
+    + setNext(handler: Handler): Handler
+    + handle(request: Request): void
+}
+
+class UserInputHandler extends BaseHandler {
+    + handle(request: Request): void
+}
+
+class ValidationHandler extends BaseHandler {
+    + handle(request: Request): void
+}
+
+class CommandHandler extends BaseHandler {
+    + handle(request: Request): void
+}
+
+class DisplayHandler extends BaseHandler {
+    + handle(request: Request): void
+}
+
+class Request {
+    - input: String
+    - command: String
+    - isValid: boolean
+    + Request(input: String)
+    + getInput(): String
+    + setInput(input: String): void
+    + getCommand(): String
+    + setCommand(command: String): void
+    + isValid(): boolean
+    + setValid(isValid: boolean): void
+}
+
+
+Handler --> Request
+BaseHandler *--> Handler
+
+@enduml

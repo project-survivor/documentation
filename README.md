@@ -251,22 +251,34 @@ Il permet de sauvegarder l'état du jeu à des moments critiques et de restaurer
 
 Le pattern Mediator définit un objet qui encapsule la façon dont un ensemble d'objets interagit. Le Mediator favorise la faible connexion en évitant que les objets se réfèrent explicitement les uns aux autres.
 
------------TODO------------
+### Médiateur du jeu
+
+Le médiateur du jeu gère les interactions entre les objets de jeu, comme les personnages, les ennemis, les objets, etc., en évitant les dépendances directes entre eux.  Il est nécessaire que cela ne devienne pas une clase dieu.
+
+> Fichier UML : [game.mediator](UML/Mediator/game.mediator.plantuml)
 
 ## Chain of Responsibility
 
 Le pattern Chain of Responsibility évite de coupler l'expéditeur d'une requête à son destinataire en donnant à plus d'un objet la possibilité de traiter la requête. Il enchaîne les objets récepteurs et passe la requête le long de la chaîne jusqu'à ce qu'un objet la traite.
 
------------TODO------------
+### Requête de jeu 
+
+Elle part de l'IHM jusqu'au traitement de la requête, et il y aura différent handlers : ValidationHandler qui valide l'entrée utilisateur, ensuite si validation on passe la chaine qui va envoyer la requete via la CommandHandler, et suite à cette commande on passe le relai au DisplayHandler qui va afficher le résultat.
+
+> Fichier UML : [request.chain-of-responsibility](UML/Chain%20of%20Responsibility/request.chain-of-responsibility.plantuml)
 
 ## Template Method
 
 Le pattern Template Method définit le squelette d'un algorithme dans une méthode, en déléguant certaines étapes aux sous-classes. Le Template Method permet aux sous-classes de redéfinir certaines étapes de l'algorithme sans changer la structure de l'algorithme.
 
------------TODO------------
+### Génération de niveaux 
+
+Le but est de définir un processus de génération de niveaux différent niveaux tel qu'une grotte et un donjon, en laissant les sous-classes définir les détails de la génération. Il y a une méthode commune (template method) qui va générer le niveau (appeler les différentes méthodes), mais les sous-classes peuvent définir les détails de la génération (permet d'étendre certaines étapes de l'algorithme sans changer la structure de l'algorithme).
+
+> Fichier UML : [level.template-method](UML/Template%20Method/level.template-method.plantuml)
 
 ## Iterator
 
 Le pattern Iterator fournit un moyen d'accéder séquentiellement aux éléments d'un agrégat sans exposer sa représentation sous-jacente.
 
------------TODO------------
+On se sert de collection simple donc il serait exégaré d'utiliser ce pattern dans notre cas.
