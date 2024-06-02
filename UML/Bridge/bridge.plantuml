@@ -1,5 +1,8 @@
 @startuml
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface Renderer {
     + render(name: String)
 }
@@ -30,5 +33,7 @@ class Collectible extends GameObject {
 }
 
 GameObject --> Renderer
+
+!endif
 
 @enduml

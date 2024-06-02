@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface ISword {
 
 }
@@ -39,5 +42,7 @@ class OrcWeaponFactory implements IWeaponFactory {
     +createSword(): ISword
     +createShield(): IShield
 }
+
+!endif
 
 @enduml
