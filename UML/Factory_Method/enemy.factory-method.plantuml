@@ -3,33 +3,33 @@
 title Enemy Factory Method
 
 interface IEnemy {
-    +abstract attack(): void
-    +abstract clone(): IEnemy
+    +attack(): void
+    +clone(): IEnemy
 }
 
 class Zombie {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -enemyBehavior: EnemyBehavior
     +abstract attack(): void
     +clone(): IEnemy
 }
 
 class Vampire {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -enemyBehavior: EnemyBehavior
     +abstract attack(): void
     +clone(): IEnemy
 }
 
 class Werewolf {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -enemyBehavior: EnemyBehavior
     +abstract attack(): void
     +clone(): IEnemy
 }

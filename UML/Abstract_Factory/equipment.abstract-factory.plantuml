@@ -20,54 +20,72 @@ class LightHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightEquipmentFactory {
@@ -88,32 +106,49 @@ class HeavyEquipmentFactory {
   +createLegs(): ILegs
 }
 
-IHead  <|-- LightHead
-ILegs  <|-- LightLegs
-ITorso <|-- LightTorso
+interface IEquipement {
+  +attach()
+  +detach()
+}
 
-IHead  <|-- MediumHead
-ITorso <|-- MediumTorso
-ILegs  <|-- MediumLegs
+LightHead ..> IEquipement
+LightTorso ..> IEquipement
+LightLegs ..> IEquipement
 
-ILegs  <|-- HeavyLegs
-IHead  <|-- HeavyHead
-ITorso <|-- HeavyTorso
+MediumHead ..> IEquipement
+MediumTorso ..> IEquipement
+MediumLegs ..> IEquipement
 
-IEquipmentFactory <|-- LightEquipmentFactory
-IEquipmentFactory <|-- MediumEquipmentFactory
-IEquipmentFactory <|-- HeavyEquipmentFactory
+HeavyHead ..> IEquipement
+HeavyTorso ..> IEquipement
+HeavyLegs ..> IEquipement
 
-LightEquipmentFactory --> LightHead : create
-LightEquipmentFactory --> LightTorso : create
-LightEquipmentFactory --> LightLegs : create
+IHead  <|.. LightHead
+ILegs  <|.. LightLegs
+ITorso <|.. LightTorso
 
-MediumEquipmentFactory --> MediumHead : create
-MediumEquipmentFactory --> MediumTorso : create
-MediumEquipmentFactory --> MediumLegs : create
+IHead  <|.. MediumHead
+ITorso <|.. MediumTorso
+ILegs  <|.. MediumLegs
 
-HeavyEquipmentFactory --> HeavyHead : create
-HeavyEquipmentFactory --> HeavyTorso : create
-HeavyEquipmentFactory --> HeavyLegs : create
+ILegs  <|.. HeavyLegs
+IHead  <|.. HeavyHead
+ITorso <|.. HeavyTorso
+
+IEquipmentFactory <|.. LightEquipmentFactory
+IEquipmentFactory <|.. MediumEquipmentFactory
+IEquipmentFactory <|.. HeavyEquipmentFactory
+
+LightEquipmentFactory ..> LightHead 
+LightEquipmentFactory ..> LightTorso 
+LightEquipmentFactory ..> LightLegs 
+
+MediumEquipmentFactory ..> MediumHead  
+MediumEquipmentFactory ..> MediumTorso  
+MediumEquipmentFactory ..> MediumLegs  
+
+HeavyEquipmentFactory ..> HeavyHead 
+HeavyEquipmentFactory ..> HeavyTorso  
+HeavyEquipmentFactory ..> HeavyLegs 
 
 @enduml

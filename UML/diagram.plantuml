@@ -2,55 +2,115 @@
 allowmixing
 
 skinparam linetype ortho
-skinparam nodesep 100
-skinparam ranksep 50
+skinparam nodesep 200
+skinparam ranksep 80
 
 interface IHunter {
-    + void attack()
 }
 
 interface IMage {
-    + void castSpell()
 }
 
 interface IFighter {
-    + void fight()
 }
 
 class OrcHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
-class OrcMage implements IMage {
-    + void castSpell()
+class OrcMage implements IMage{
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanMage implements IMage {
-    + void castSpell()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfMage implements IMage {
-    + void castSpell()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class OrcFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    -weapoon: IWeapon
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 interface ICharacterFactory {
@@ -77,6 +137,12 @@ class ElfFactory implements ICharacterFactory {
     + IFighter createFighter()
 }
 
+interface ICharacter {
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
 
 OrcFactory ..> OrcHunter
 OrcFactory ..> OrcMage
@@ -90,6 +156,17 @@ ElfFactory ..> ElfHunter
 ElfFactory ..> ElfMage
 ElfFactory ..> ElfFighter
 
+HumanHunter ..> ICharacter
+HumanMage ..> ICharacter
+HumanFighter ..> ICharacter
+
+OrcHunter ..> ICharacter
+OrcMage ..> ICharacter
+OrcFighter ..> ICharacter
+
+ElfHunter ..> ICharacter
+ElfMage ..> ICharacter
+ElfFighter ..> ICharacter
 
 
 
@@ -112,54 +189,72 @@ class LightHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class MediumLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyHead {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyTorso {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class HeavyLegs {
   -health: int
   -weight: int
   -speedBonus: int
+  +attach()
+  +detach()
 }
 
 class LightEquipmentFactory {
@@ -180,91 +275,52 @@ class HeavyEquipmentFactory {
   +createLegs(): ILegs
 }
 
-IHead  <|-- LightHead
-ILegs  <|-- LightLegs
-ITorso <|-- LightTorso
-
-IHead  <|-- MediumHead
-ITorso <|-- MediumTorso
-ILegs  <|-- MediumLegs
-
-ILegs  <|-- HeavyLegs
-IHead  <|-- HeavyHead
-ITorso <|-- HeavyTorso
-
-IEquipmentFactory <|-- LightEquipmentFactory
-IEquipmentFactory <|-- MediumEquipmentFactory
-IEquipmentFactory <|-- HeavyEquipmentFactory
-
-LightEquipmentFactory --> LightHead : create
-LightEquipmentFactory --> LightTorso : create
-LightEquipmentFactory --> LightLegs : create
-
-MediumEquipmentFactory --> MediumHead : create
-MediumEquipmentFactory --> MediumTorso : create
-MediumEquipmentFactory --> MediumLegs : create
-
-HeavyEquipmentFactory --> HeavyHead : create
-HeavyEquipmentFactory --> HeavyTorso : create
-HeavyEquipmentFactory --> HeavyLegs : create
-
-
-class Character {
-    -strength: int
-    -agility: int
-    -skills: String[]
-    -equipment: String
-    +Character()
-    +setStrength(strength: int): void
-    +setAgility(agility: int): void
-    +setSkills(skills: String[]): void
-    +setEquipment(equipment: String): void
-    +display(): void
+interface IEquipement {
+  +attach()
+  +detach()
 }
 
-interface Builder {
-    +reset(): void
-    +setStrength(strength: int): Builder
-    +setAgility(agility: int): Builder
-    +setSkills(skills: String[]): Builder
-    +setEquipment(equipment: String): Builder
-    +build(): Character
-}
+ICharacter --> IEquipement
 
-class CharacterBuilder1 {
-    -character: Character
-    +CharacterBuilder1()
-    +reset(): void
-    +setStrength(strength: int): CharacterBuilder1
-    +setAgility(agility: int): CharacterBuilder1
-    +setSkills(skills: String[]): CharacterBuilder1
-    +setEquipment(equipment: String): CharacterBuilder1
-    +build(): Character
-}
+LightHead ..> IEquipement
+LightTorso ..> IEquipement
+LightLegs ..> IEquipement
 
-class CharacterBuilder2 {
-    -character: Character
-    +CharacterBuilder2()
-    +reset(): void
-    +setStrength(strength: int): CharacterBuilder2
-    +setAgility(agility: int): CharacterBuilder2
-    +setSkills(skills: String[]): CharacterBuilder2
-    +setEquipment(equipment: String): CharacterBuilder2
-    +build(): Character
-}
+MediumHead ..> IEquipement
+MediumTorso ..> IEquipement
+MediumLegs ..> IEquipement
 
-class Director {
-    -builder: Builder
-    +Director(builder: Builder)
-    +changeBuilder(builder: Builder): void
-    +make(type: String): Character
-}
+HeavyHead ..> IEquipement
+HeavyTorso ..> IEquipement
+HeavyLegs ..> IEquipement
 
-Character *-- Builder
-Builder <|.. CharacterBuilder1
-Builder <|.. CharacterBuilder2
-Director --> Builder
+IHead  <|.. LightHead
+ILegs  <|.. LightLegs
+ITorso <|.. LightTorso
 
+IHead  <|.. MediumHead
+ITorso <|.. MediumTorso
+ILegs  <|.. MediumLegs
+
+ILegs  <|.. HeavyLegs
+IHead  <|.. HeavyHead
+ITorso <|.. HeavyTorso
+
+IEquipmentFactory <|.. LightEquipmentFactory
+IEquipmentFactory <|.. MediumEquipmentFactory
+IEquipmentFactory <|.. HeavyEquipmentFactory
+
+LightEquipmentFactory ..> LightHead 
+LightEquipmentFactory ..> LightTorso 
+LightEquipmentFactory ..> LightLegs 
+
+MediumEquipmentFactory ..> MediumHead  
+MediumEquipmentFactory ..> MediumTorso  
+MediumEquipmentFactory ..> MediumLegs  
+
+HeavyEquipmentFactory ..> HeavyHead 
+HeavyEquipmentFactory ..> HeavyTorso  
+HeavyEquipmentFactory ..> HeavyLegs 
 
 class GameLevel {
     -enemies: List<String>
@@ -279,43 +335,41 @@ class GameLevel {
 
 interface LevelBuilder {
     +reset(): void
-    +addEnemies(enemies: List<String>): LevelBuilder
-    +addItems(items: List<String>): LevelBuilder
-    +addDecorations(decorations: List<String>): LevelBuilder
+    +addEnemies(enemies: List<String>)
+    +addItems(items: List<String>)
+    +addDecorations(decorations: List<String>)
     +build(): GameLevel
 }
 
-class ConcreteLevelBuilder1 {
+class ConcreteLevelBuilder {
     -level: GameLevel
-    +ConcreteLevelBuilder1()
+    +ConcreteLevelBuilder()
     +reset(): void
-    +addEnemies(enemies: List<String>): ConcreteLevelBuilder1
-    +addItems(items: List<String>): ConcreteLevelBuilder1
-    +addDecorations(decorations: List<String>): ConcreteLevelBuilder1
+    +addEnemies(enemies: List<String>)
+    +addItems(items: List<String>)
+    +addDecorations(decorations: List<String>)
     +build(): GameLevel
 }
 
-class ConcreteLevelBuilder2 {
-    -level: GameLevel
-    +ConcreteLevelBuilder2()
-    +reset(): void
-    +addEnemies(enemies: List<String>): ConcreteLevelBuilder2
-    +addItems(items: List<String>): ConcreteLevelBuilder2
-    +addDecorations(decorations: List<String>): ConcreteLevelBuilder2
-    +build(): GameLevel
-}
-
-class Director {
+class LevelDirector {
     -builder: LevelBuilder
-    +Director(builder: LevelBuilder)
-    +changeBuilder(builder: LevelBuilder): void
-    +make(type: String): GameLevel
+    +LevelDirector(builder: LevelBuilder)
+    +make(type: LevelType): GameLevel
 }
+
+enum LevelType {
+    Cave
+    Dungeon
+    Forest
+    Castle
+}
+
+LevelDirector --> LevelType
+
 
 GameLevel *-- LevelBuilder
-LevelBuilder <|.. ConcreteLevelBuilder1
-LevelBuilder <|.. ConcreteLevelBuilder2
-Director --> LevelBuilder
+LevelBuilder <|.. ConcreteLevelBuilder
+LevelDirector --> LevelBuilder
 
 
 
@@ -368,30 +422,24 @@ interface Command {
 }
 
 class AttackCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - params: Params
-    + AttackCommand(params Params, player: Player)
+    + AttackCommand(params Params)
     + execute()
 }
 
 class MoveCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - param: Param
-    + MoveCommand(params Params,player: Player)
+    + MoveCommand(params Params)
     + execute()
 }
 
 class UseItemCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - param: Param
-    + UseItemCommand(params Params, player: Player)
+    + UseItemCommand(params Params)
     + execute()
-}
-
-class Character {
-    + attack(damage: int, target: Enemy)
-    + move(speed: int, direction: Direction)
-    + useItem(item: Item, target: Player)
 }
 
 class Invoker {
@@ -410,44 +458,35 @@ Invoker o-- Command
 Invoker --> CommandHistory
 CommandHistory *--> Command
 
-AttackCommand --> Character
-MoveCommand --> Character
-UseItemCommand --> Character
+AttackCommand o--> ICharacter
+MoveCommand o--> ICharacter
+UseItemCommand o--> ICharacter
 
-interface CharacterComponent {
-    +getDescription(): String
-    +attack(): void
-}
-
-class BasicCharacter implements CharacterComponent {
-    +name: String
-    +BasicCharacter(name: String)
-    +getDescription(): String
-    +attack(): void
-}
-
-abstract class CharacterDecorator implements CharacterComponent {
-    protected -decoratedCharacter: CharacterComponent
-    +CharacterDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+abstract class CharacterDecorator implements ICharacter {
+    -decoratedCharacter: ICharacter
+    +CharacterDecorator(character: ICharacter)
+    +attack(damage: int, target: IEnemy)
+    +move(speed: int, direction: Direction)
+    +useItem(item: Item)
 }
 
 class FirePowerDecorator extends CharacterDecorator {
-    +FirePowerDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+    +FirePowerDecorator(character: ICharacter)
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
     +addFirePower(): void
 }
 
 class InvisibilityDecorator extends CharacterDecorator {
-    +InvisibilityDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+    +InvisibilityDecorator(character: ICharacter)
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
     +addInvisibility(): void
 }
 
-CharacterDecorator *--> CharacterComponent
+CharacterDecorator *--> ICharacter
 
 
 abstract class SpellDecorator implements ISpell {
@@ -488,6 +527,7 @@ SpellDecorator <|-- WaterSpellDecorator
 SpellDecorator <|-- GroundSpellDecorator
 SpellDecorator <|-- AirSpellDecorator
 
+ICharacter --> ISpell
 
 abstract class WeaponDecorator implements IWeapon {
     - decoratedWeapon: IWeapon
@@ -526,6 +566,7 @@ class AirEnchantmentDecorator extends WeaponDecorator {
 }
 
 WeaponDecorator *--> IWeapon 
+ICharacter --> IWeapon
 
 
 interface ICollectible {
@@ -561,28 +602,34 @@ ICollectibleFactory <|-- ExperienceFactory
 ICollectibleFactory ..> ICollectible : creates
 
 class Zombie {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
     +abstract attack(): void
     +clone(): IEnemy
 }
 
 class Vampire {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
     +abstract attack(): void
     +clone(): IEnemy
 }
 
 class Werewolf {
-    -speed: number
-    -health: number
-    -damage: number
-    -sprite
+    -x: int
+    -y: int
+    -type: EnemyType
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
     +abstract attack(): void
     +clone(): IEnemy
 }
@@ -678,8 +725,11 @@ class Sword implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class Bow implements IWeapon {
@@ -687,8 +737,11 @@ class Bow implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class Wand implements IWeapon {
@@ -696,8 +749,11 @@ class Wand implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class SwordFactory extends WeaponFactory {
@@ -725,30 +781,23 @@ class EnemyType {
     + attack(): void
 }
 
-class Enemy {
-    + x: int
-    + y: int
-    + type: EnemyType
-    + Enemy(x: int, y: int, type: EnemyType)
-    + attack(): void
-    + move(newX: int, newY: int): void
-}
-
-class EnemyFactory {
+class EnemyFlyweightFactory {
     - enemyTypes: EnemyType[]
     + getEnemyType(name: String, speed: int, health: int, damage: int, sprite: String): EnemyType
 }
 
 class GameWorld {
-    - enemies: Enemy[]
+    - enemies: IEnemy[]
     + addEnemy(x: int, y: int, name: String, speed: int, health: int, damage: int, sprite: String): void
     + render(): void
 }
 
-EnemyFactory o--> EnemyType
-GameWorld o--> Enemy
-GameWorld --> EnemyFactory
-Enemy --> EnemyType
+EnemyFlyweightFactory o--> EnemyType
+GameWorld o--> IEnemy
+GameWorld --> EnemyFlyweightFactory
+Zombie --> EnemyType
+Werewolf --> EnemyType
+Vampire --> EnemyType
 
 interface Mediator {
     + notify(sender: Object, event: String): void
@@ -804,14 +853,14 @@ class GameMemento {
     + getState(): String
 }
 
-class Player {
+class Character {
     - state: String
     + setState(state: String)
     + save(): PlayerMemento
     + restore(m: PlayerMemento)
 }
 
-Player +-- PlayerMemento : inner class
+Character +-- PlayerMemento : inner class
 Game +-- GameMemento : inner class 
 
 class PlayerMemento {
@@ -822,7 +871,7 @@ class PlayerMemento {
 
 class Caretaker {
     - game: Game
-    - player: Player
+    - player: Character
     - gameHistory: List<GameMemento>
     - playerHistory: List<PlayerMemento>
     + saveGameState()
@@ -832,9 +881,9 @@ class Caretaker {
 }
 
 Game --> GameMemento
-Player --> PlayerMemento
+Character --> PlayerMemento
 Caretaker --> Game
-Caretaker --> Player
+Caretaker --> Character
 Caretaker o--> GameMemento
 Caretaker o--> PlayerMemento
 
@@ -873,8 +922,11 @@ class IEnemyRegistry {
 }
 
 interface IEnemy {
-    +abstract attack(): void
-    +abstract clone(): IEnemy
+    +attack(): void
+    +clone(): IEnemy
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
 }
 
 IEnemyRegistry o--> IEnemy : prototype
@@ -989,15 +1041,10 @@ class FleeBehavior implements EnemyBehavior {
 class PatrolBehavior implements EnemyBehavior {
     +execute(): void
 }
-
-class Enemy {
-    -behavior: EnemyBehavior
-    +setBehavior(behavior: EnemyBehavior): void
-    +performAction(): void
-}
-
-Enemy o--> EnemyBehavior
-
+ 
+Vampire o--> EnemyBehavior
+Werewolf o--> EnemyBehavior
+Zombie o--> EnemyBehavior
 
 interface ShootingStrategy {
     +shoot(): void
@@ -1011,13 +1058,10 @@ class FanShooting implements ShootingStrategy {
     +shoot(): void
 }
 
-class Weapon {
-    -strategy: ShootingStrategy
-    +setStrategy(strategy: ShootingStrategy): void
-    +shoot(): void
-}
+Bow o--> ShootingStrategy
+Sword o--> ShootingStrategy
+Wand o--> ShootingStrategy
 
-Weapon o--> ShootingStrategy
 
 abstract class LevelGenerator {
     +generateLevel(): void

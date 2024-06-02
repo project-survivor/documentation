@@ -5,30 +5,24 @@ interface Command {
 }
 
 class AttackCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - params: Params
-    + AttackCommand(params Params, player: Player)
+    + AttackCommand(params Params)
     + execute()
 }
 
 class MoveCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - param: Param
-    + MoveCommand(params Params,player: Player)
+    + MoveCommand(params Params)
     + execute()
 }
 
 class UseItemCommand implements Command {
-    - player: Player
+    - character: ICharacter
     - param: Param
-    + UseItemCommand(params Params, player: Player)
+    + UseItemCommand(params Params)
     + execute()
-}
-
-class Character {
-    + attack(damage: int, target: Enemy)
-    + move(speed: int, direction: Direction)
-    + useItem(item: Item, target: Player)
 }
 
 class Invoker {
@@ -47,8 +41,14 @@ Invoker o-- Command
 Invoker --> CommandHistory
 CommandHistory *--> Command
 
-AttackCommand --> Character
-MoveCommand --> Character
-UseItemCommand --> Character
+AttackCommand o--> ICharacter
+MoveCommand o--> ICharacter
+UseItemCommand o--> ICharacter
+
+interface ICharacter {
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
 
 @enduml

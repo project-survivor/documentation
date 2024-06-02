@@ -9,8 +9,8 @@ class IEnemyRegistry {
 }
 
 interface IEnemy {
-    +abstract attack(): void
-    +abstract clone(): IEnemy
+    +attack(): void
+    +clone(): IEnemy
 }
 
 class Zombie implements IEnemy {

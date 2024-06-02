@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-
-
-
 class GameLevel {
     -enemies: List<String>
     -items: List<String>
@@ -17,44 +14,40 @@ class GameLevel {
 
 interface LevelBuilder {
     +reset(): void
-    +addEnemies(enemies: List<String>): LevelBuilder
-    +addItems(items: List<String>): LevelBuilder
-    +addDecorations(decorations: List<String>): LevelBuilder
+    +addEnemies(enemies: List<String>)
+    +addItems(items: List<String>)
+    +addDecorations(decorations: List<String>)
     +build(): GameLevel
 }
 
-class ConcreteLevelBuilder1 {
+class ConcreteLevelBuilder {
     -level: GameLevel
-    +ConcreteLevelBuilder1()
+    +ConcreteLevelBuilder()
     +reset(): void
-    +addEnemies(enemies: List<String>): ConcreteLevelBuilder1
-    +addItems(items: List<String>): ConcreteLevelBuilder1
-    +addDecorations(decorations: List<String>): ConcreteLevelBuilder1
+    +addEnemies(enemies: List<String>)
+    +addItems(items: List<String>)
+    +addDecorations(decorations: List<String>)
     +build(): GameLevel
 }
 
-class ConcreteLevelBuilder2 {
-    -level: GameLevel
-    +ConcreteLevelBuilder2()
-    +reset(): void
-    +addEnemies(enemies: List<String>): ConcreteLevelBuilder2
-    +addItems(items: List<String>): ConcreteLevelBuilder2
-    +addDecorations(decorations: List<String>): ConcreteLevelBuilder2
-    +build(): GameLevel
-}
-
-class Director {
+class LevelDirector {
     -builder: LevelBuilder
-    +Director(builder: LevelBuilder)
-    +changeBuilder(builder: LevelBuilder): void
-    +make(type: String): GameLevel
+    +LevelDirector(builder: LevelBuilder)
+    +make(type: LevelType): GameLevel
 }
+
+enum LevelType {
+    Cave
+    Dungeon
+    Forest
+    Castle
+}
+
+LevelDirector --> LevelType
+
 
 GameLevel *-- LevelBuilder
-LevelBuilder <|.. ConcreteLevelBuilder1
-LevelBuilder <|.. ConcreteLevelBuilder2
-Director --> LevelBuilder
-
-
+LevelBuilder <|.. ConcreteLevelBuilder
+LevelDirector --> LevelBuilder
 
 @enduml

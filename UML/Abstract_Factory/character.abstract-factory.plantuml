@@ -2,51 +2,102 @@
 title Abstract Factory - Character Creation
 
 interface IHunter {
-    + void attack()
 }
 
 interface IMage {
-    + void castSpell()
 }
 
 interface IFighter {
-    + void fight()
 }
 
 class OrcHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfHunter implements IHunter {
-    + void attack()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
-class OrcMage implements IMage {
-    + void castSpell()
+class OrcMage implements IMage{
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanMage implements IMage {
-    + void castSpell()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfMage implements IMage {
-    + void castSpell()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class OrcFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class HumanFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 class ElfFighter implements IFighter {
-    + void fight()
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
 interface ICharacterFactory {
@@ -73,6 +124,12 @@ class ElfFactory implements ICharacterFactory {
     + IFighter createFighter()
 }
 
+interface ICharacter {
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
 
 OrcFactory ..> OrcHunter
 OrcFactory ..> OrcMage
@@ -85,5 +142,17 @@ HumanFactory ..> HumanFighter
 ElfFactory ..> ElfHunter
 ElfFactory ..> ElfMage
 ElfFactory ..> ElfFighter
+
+HumanHunter ..> ICharacter
+HumanMage ..> ICharacter
+HumanFighter ..> ICharacter
+
+OrcHunter ..> ICharacter
+OrcMage ..> ICharacter
+OrcFighter ..> ICharacter
+
+ElfHunter ..> ICharacter
+ElfMage ..> ICharacter
+ElfFighter ..> ICharacter
 
 @enduml

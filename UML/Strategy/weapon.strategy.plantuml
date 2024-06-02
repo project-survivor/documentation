@@ -1,8 +1,46 @@
 @startuml
 hide footbox
 
+interface IWeapon {
+    + attack1()
+    + attack2()
+}
 
+class Sword implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    -strategy: ShootingStrategy
+    + attack1()
+    + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
+}
 
+class Bow implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    -strategy: ShootingStrategy
+    + attack1()
+    + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
+}
+
+class Wand implements IWeapon {
+    + physicalDamage : int
+    + magicalDamage : int
+    + criticalRate : int
+    + attackSpeed : int
+    -strategy: ShootingStrategy
+    + attack1()
+    + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
+}
 
 interface ShootingStrategy {
     +shoot(): void
@@ -16,13 +54,9 @@ class FanShooting implements ShootingStrategy {
     +shoot(): void
 }
 
-class Weapon {
-    -strategy: ShootingStrategy
-    +setStrategy(strategy: ShootingStrategy): void
-    +shoot(): void
-}
-
-Weapon o--> ShootingStrategy
+Bow o--> ShootingStrategy
+Sword o--> ShootingStrategy
+Wand o--> ShootingStrategy
 
 
 

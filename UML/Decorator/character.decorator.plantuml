@@ -1,39 +1,138 @@
 @startuml
 hide footbox
 
-interface CharacterComponent {
-    +getDescription(): String
-    +attack(): void
+class OrcHunter implements IHunter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
-class BasicCharacter implements CharacterComponent {
-    +name: String
-    +BasicCharacter(name: String)
-    +getDescription(): String
-    +attack(): void
+class HumanHunter implements IHunter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
 }
 
-abstract class CharacterDecorator implements CharacterComponent {
-    protected -decoratedCharacter: CharacterComponent
-    +CharacterDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+class ElfHunter implements IHunter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class OrcMage implements IMage{
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class HumanMage implements IMage {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class ElfMage implements IMage {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class OrcFighter implements IFighter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class HumanFighter implements IFighter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+class ElfFighter implements IFighter {
+    -strength: int
+    -agility: int
+    -spells: ISpell[]
+    -equipments: IEquipment[]
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+interface ICharacter {
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
+}
+
+abstract class CharacterDecorator implements ICharacter {
+    protected -decoratedCharacter: ICharacter
+    +CharacterDecorator(character: ICharacter)
+    +attack(damage: int, target: IEnemy)
+    +move(speed: int, direction: Direction)
+    +useItem(item: Item)
 }
 
 class FirePowerDecorator extends CharacterDecorator {
-    +FirePowerDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+    +FirePowerDecorator(character: ICharacter)
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
     +addFirePower(): void
 }
 
 class InvisibilityDecorator extends CharacterDecorator {
-    +InvisibilityDecorator(character: CharacterComponent)
-    +getDescription(): String
-    +attack(): void
+    +InvisibilityDecorator(character: ICharacter)
+    + attack(damage: int, target: IEnemy)
+    + move(speed: int, direction: Direction)
+    + useItem(item: Item)
     +addInvisibility(): void
 }
 
-CharacterDecorator *--> CharacterComponent
+CharacterDecorator *--> ICharacter
+
+HumanHunter ..> ICharacter
+HumanMage ..> ICharacter
+HumanFighter ..> ICharacter
+
+OrcHunter ..> ICharacter
+OrcMage ..> ICharacter
+OrcFighter ..> ICharacter
+
+ElfHunter ..> ICharacter
+ElfMage ..> ICharacter
+ElfFighter ..> ICharacter
 
 @enduml

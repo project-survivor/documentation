@@ -14,7 +14,6 @@
         -   [Création du personnage](#création-du-personnage)
         -   [Création des équipements](#création-des-équipements)
     -   [Builder](#builder)
-        -   [Création de personnages complexes](#création-de-personnages-complexes)
         -   [Construction de niveaux](#construction-de-niveaux)
     -   [Prototype](#prototype)
         -   [Clone des ennemis](#clone-des-ennemis)
@@ -47,6 +46,15 @@
         -   [Requête de jeu](#requête-de-jeu)
     -   [Template Method](#template-method)
         -   [Génération de niveaux](#génération-de-niveaux)
+
+> **Heures de travail:**
+> BEAUCOUP TROP pour tous ces diagrammes, des heures d'appels avec Julien, Joé et Isamet sur discord.
+
+# Diagramme globale
+
+![all-diagrams](UML/diagram.png)
+
+> Fichier UML : [all-diagrams](UML/diagram.plantuml)
 
 # I. Pattern de création
 
@@ -127,13 +135,17 @@ Un équipement aura des statistiques (défense, vitesse, etc) qui pourront être
 
 Le pattern Builder sépare la construction d'un objet complexe de sa représentation afin que le même processus de construction puisse créer différentes représentations.
 
-### Création de personnages complexes
+### Création de personnages
 
-Utiliser un `CharacterBuilder` pour créer un personnage avec des attributs comme la force, l'agilité, les compétences, et les équipements, en permettant de construire l'objet étape par étape.
+On n'utilise pas de Builder pour la création des personnages car on a déjà une abstract factory. La Fabrique est souvent utilisée dès le début de la conception (moins compliquée et plus personnalisée grâce aux sous-classes) et évolue vers la Fabrique abstraite, le Prototype, ou le Monteur (ce dernier étant plus flexible, mais plus compliqué).
 
-![character.builder](UML/Builder/character.builder.png)
+### Construction de niveaux
 
-> Fichier UML : [character.builder](UML/Builder/character.builder.plantuml)
+Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant des ennemis, des objets, et des décorations de manière structurée.
+
+![level.builder](UML/Builder/level.builder.png)
+
+> Fichier UML : [level.builder](UML/Builder/level.builder.plantuml)
 
 ## Prototype
 
@@ -144,14 +156,6 @@ Le but étant de cloner les ennemis pour éviter de les recréer à chaque fois 
 ![enemy.prototype](UML/Prototype/enemy.prototype.png)
 
 > Fichier UML : [enemy.prototype](UML/Prototype/enemy.prototype.plantuml)
-
-### Construction de niveaux
-
-Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant des ennemis, des objets, et des décorations de manière structurée.
-
-![level.builder](UML/Builder/level.builder.png)
-
-> Fichier UML : [level.builder](UML/Builder/level.builder.plantuml)
 
 # II. Pattern structurel
 

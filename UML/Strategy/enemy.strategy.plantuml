@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-
-
-
 interface EnemyBehavior {
     +execute(): void
 }
@@ -19,15 +16,48 @@ class FleeBehavior implements EnemyBehavior {
 class PatrolBehavior implements EnemyBehavior {
     +execute(): void
 }
+ 
+Vampire o--> EnemyBehavior
+Werewolf o--> EnemyBehavior
+Zombie o--> EnemyBehavior
+ 
+interface IEnemy {
+    +attack(): void
+    +clone(): IEnemy
+}
 
-class Enemy {
+class Zombie {
+    -x: int
+    -y: int
+    -type: EnemyType
     -behavior: EnemyBehavior
     +setBehavior(behavior: EnemyBehavior): void
     +performAction(): void
+    +abstract attack(): void
+    +clone(): IEnemy
 }
 
-Enemy o--> EnemyBehavior
+class Vampire {
+    -x: int
+    -y: int
+    -type: EnemyType
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
+    +abstract attack(): void
+    +clone(): IEnemy
+}
 
+class Werewolf {
+    -x: int
+    -y: int
+    -type: EnemyType
+    -behavior: EnemyBehavior
+    +setBehavior(behavior: EnemyBehavior): void
+    +performAction(): void
+    +abstract attack(): void
+    +clone(): IEnemy
+}
 
 
 @enduml

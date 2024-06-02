@@ -14,8 +14,11 @@ class Sword implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class Bow implements IWeapon {
@@ -23,8 +26,11 @@ class Bow implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class Wand implements IWeapon {
@@ -32,8 +38,11 @@ class Wand implements IWeapon {
     + magicalDamage : int
     + criticalRate : int
     + attackSpeed : int
+    -strategy: ShootingStrategy
     + attack1()
     + attack2()
+    +setStrategy(strategy: ShootingStrategy): void
+    +shoot(): void
 }
 
 class SwordFactory extends WeaponFactory {
