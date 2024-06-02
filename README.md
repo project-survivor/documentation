@@ -54,7 +54,7 @@
 
 Voici le diagramme global regroupant l'intégralité des diagrammes.
 
-![all-diagrams](UML/diagram.png)
+![all-diagrams](UML/diagram.svg)
 
 > Fichier UML : [all-diagrams](UML/diagram.plantuml)
 
