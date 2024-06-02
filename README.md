@@ -50,7 +50,9 @@
 > **Heures de travail:**
 > BEAUCOUP TROP pour tous ces diagrammes, des heures d'appels avec Julien, Joé et Isamet sur discord.
 
-# Diagramme globale
+# Diagramme global
+
+Voici le diagramme global regroupant l'intégralité des diagrammes.
 
 ![all-diagrams](UML/diagram.png)
 
