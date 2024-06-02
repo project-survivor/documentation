@@ -27,7 +27,8 @@ jobs:
 
     - name: Convert PlantUML to PNG
       run: |
-        find UML -name "*.puml" | while read file; do
+        find UML -name "*.plantuml" | while read file; do
+          echo "Processing $file" 
           plantuml -tpng "$file";
         done
 
@@ -35,8 +36,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add *
-        git commit -m "Add generated PNG files"
+        git add UML/**/*.png
+        git commit -m "bot(ci): add generated PNG files from .plantuml diagrams"
         git push origin ci/plant-uml-to-png-test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
