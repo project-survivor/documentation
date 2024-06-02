@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 class Flyweight {
     -type: String
     -image: String
@@ -30,7 +27,5 @@ class Client {
 Client --> Context
 Context --> Flyweight
 FlyweightFactory --> Flyweight
-
-!endif
 
 @enduml

@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 interface Particle {
     +render(): void
 }
@@ -21,7 +18,5 @@ class ParticleGroup implements Particle {
 
 Particle <|-- SimpleParticle
 Particle <|-- ParticleGroup
-
-!endif
 
 @enduml

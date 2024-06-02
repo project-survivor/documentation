@@ -1,8 +1,5 @@
 @startuml
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 abstract class WeaponFactory {
     {abstract} +createWeapon() : IWeapon
 }
@@ -52,7 +49,5 @@ class WandFactory extends WeaponFactory {
 }
 
 WeaponFactory ..> IWeapon : creates
-
-!endif
 
 @enduml

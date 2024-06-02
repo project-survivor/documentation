@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 class JSONConfigManager {
     -instance: JSONConfigManager
     -jsonData: String
@@ -15,8 +12,6 @@ class JSONConfigManager {
     +setData(data: String): void
 }
 
-JSONConfigManager --|> Singleton
-
-!endif
+JSONConfigManager --> JSONConfigManager
 
 @enduml

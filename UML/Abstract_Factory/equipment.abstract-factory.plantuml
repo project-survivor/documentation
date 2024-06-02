@@ -1,9 +1,6 @@
 @startuml 
 title Abstract Factory - Equipment Creation
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 interface IEquipmentFactory {
   +createHead(): IHead
   +createTorso(): ITorso
@@ -118,7 +115,5 @@ MediumEquipmentFactory --> MediumLegs : create
 HeavyEquipmentFactory --> HeavyHead : create
 HeavyEquipmentFactory --> HeavyTorso : create
 HeavyEquipmentFactory --> HeavyLegs : create
-
-!endif
 
 @enduml

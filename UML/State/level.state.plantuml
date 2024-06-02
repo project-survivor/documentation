@@ -1,8 +1,8 @@
 @startuml
 title State Pattern for Level Phases
 
-!ifndef DIAGRAM
-!define DIAGRAM
+
+
 
 class LevelContext {
     - state: LevelState
@@ -29,6 +29,6 @@ class BossState implements LevelState {
 
 LevelContext o--> LevelState
 
-!endif
+
 
 @enduml

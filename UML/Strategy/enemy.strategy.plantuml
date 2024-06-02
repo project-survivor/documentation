@@ -1,8 +1,8 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
+
+
 
 interface EnemyBehavior {
     +execute(): void
@@ -28,6 +28,6 @@ class Enemy {
 
 Enemy o--> EnemyBehavior
 
-!endif
+
 
 @enduml

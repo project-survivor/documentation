@@ -2,9 +2,6 @@
 
 title Enemy Factory Method
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 interface IEnemy {
     +abstract attack(): void
     +abstract clone(): IEnemy
@@ -62,7 +59,5 @@ IEnemyFactory <|-- VampireFactory
 IEnemyFactory <|-- WerewolfFactory
 
 IEnemyFactory ..> IEnemy : creates
-
-!endif
 
 @enduml

@@ -2,9 +2,6 @@
 
 title Weapon Decorator Pattern
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 abstract class WeaponDecorator implements IWeapon {
     - decoratedWeapon: IWeapon
     + WeaponDecorator(weapon: IWeapon)
@@ -57,7 +54,5 @@ class Wand implements IWeapon {
 }
 
 WeaponDecorator *--> IWeapon 
-
-!endif
 
 @enduml

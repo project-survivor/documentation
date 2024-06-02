@@ -1,8 +1,8 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
+
+
 
 class GameLevel {
     -enemies: List<String>
@@ -55,6 +55,6 @@ LevelBuilder <|.. ConcreteLevelBuilder1
 LevelBuilder <|.. ConcreteLevelBuilder2
 Director --> LevelBuilder
 
-!endif
+
 
 @enduml

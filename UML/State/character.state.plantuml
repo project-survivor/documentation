@@ -1,9 +1,6 @@
 @startuml
 title State Pattern for Character States
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 class Context {
     - state: State
     + Context(initialState: State)
@@ -28,7 +25,5 @@ class EnragedState implements State {
 }
 
 Context o--> State
-
-!endif
 
 @enduml

@@ -2,9 +2,6 @@
 
 title Spell Factory Method
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 abstract class SpellFactory {
     {abstract} +createSpell(name: string, damage: int): ISpell
 }
@@ -58,7 +55,5 @@ SpellFactory <|-down- FighterSpellFactory
 ISpell <|.up. MageSpell
 ISpell <|.up. HunterSpell
 ISpell <|.up. FighterSpell
-
-!endif
 
 @enduml

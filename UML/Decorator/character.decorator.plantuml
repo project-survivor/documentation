@@ -1,9 +1,6 @@
 @startuml
 hide footbox
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 interface CharacterComponent {
     +getDescription(): String
     +attack(): void
@@ -38,7 +35,5 @@ class InvisibilityDecorator extends CharacterDecorator {
 }
 
 CharacterDecorator *--> CharacterComponent
-
-!endif
 
 @enduml

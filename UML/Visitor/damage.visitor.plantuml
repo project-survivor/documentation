@@ -1,8 +1,8 @@
 @startuml
 title Visitor Pattern for Game Interactions
 
-!ifndef DIAGRAM
-!define DIAGRAM
+
+
 
 interface Visitor {
     + visit(IEnemy e): void
@@ -40,9 +40,6 @@ class DamageVisitor implements Visitor {
     + visit(ItemB i): void
 }
 
-Client -> Element : element.accept(visitor)
 Element -> Visitor : v.visit(this)
-
-!endif
 
 @enduml

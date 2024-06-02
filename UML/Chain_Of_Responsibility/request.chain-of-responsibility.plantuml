@@ -1,9 +1,6 @@
 @startuml
 title Chain of Responsibility Pattern for User Input to UI Display
 
-!ifndef DIAGRAM
-!define DIAGRAM
-
 interface Handler {
     + setNext(handler: Handler): Handler
     + handle(request: Request): void
@@ -47,7 +44,5 @@ class Request {
 
 Handler --> Request
 BaseHandler *--> Handler
-
-!endif
 
 @enduml
