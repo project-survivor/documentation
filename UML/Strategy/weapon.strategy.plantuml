@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface ShootingStrategy {
     +shoot(): void
 }
@@ -20,5 +23,7 @@ class Weapon {
 }
 
 Weapon o--> ShootingStrategy
+
+!endif
 
 @enduml

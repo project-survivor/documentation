@@ -1,4 +1,8 @@
 @startuml
+
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface Command {
     + execute()
 }
@@ -49,5 +53,7 @@ CommandHistory *--> Command
 AttackCommand --> Character
 MoveCommand --> Character
 UseItemCommand --> Character
+
+!endif
 
 @enduml

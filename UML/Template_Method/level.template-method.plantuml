@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 abstract class LevelGenerator {
     +generateLevel(): void
     + {abstract} generateTerrain(): void
@@ -25,5 +28,7 @@ class DungeonLevelGenerator {
 
 LevelGenerator <|-- CaveLevelGenerator
 LevelGenerator <|-- DungeonLevelGenerator
+
+!endif
 
 @enduml

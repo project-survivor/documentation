@@ -1,6 +1,9 @@
 @startuml
 title Mediator Pattern for Game Systems
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface Mediator {
     + notify(sender: Object, event: String): void
 }
@@ -40,5 +43,7 @@ ConcreteMediator *--> NotificationSystem
 CombatSystem --> Mediator : notify(sender, "attack")
 LootSystem --> Mediator : notify(sender, "lootGenerated")
 NotificationSystem --> Mediator : notify(sender, "displayNotification")
+
+!endif
 
 @enduml

@@ -2,6 +2,9 @@
 
 title Enemy Prototype Pattern
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 class IEnemyRegistry {
     -enemies: IEnemy[]
     +addIEnemy(id: string, IEnemy: IEnemy): void
@@ -45,5 +48,7 @@ IEnemyRegistry o--> IEnemy : prototype
 note right of IEnemy::clone
 Deep copy for the clone
 end note
+
+!endif
 
 @enduml

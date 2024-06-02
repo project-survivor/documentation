@@ -1,5 +1,8 @@
 @startuml
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 class Game {
     - state: String
     + setState(state: String)
@@ -46,5 +49,7 @@ Caretaker --> Game
 Caretaker --> Player
 Caretaker o--> GameMemento
 Caretaker o--> PlayerMemento
+
+!endif
 
 @enduml

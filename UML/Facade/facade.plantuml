@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 class RenderingSystem {
     +renderScene(): void
 }
@@ -25,5 +28,7 @@ class GameFacade {
 GameFacade *-- RenderingSystem
 GameFacade *-- InputSystem
 GameFacade *-- ResourceManager
+
+!endif
 
 @enduml

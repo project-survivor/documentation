@@ -1,5 +1,6 @@
 @startuml
 allowmixing
+
 ' Master PlantUML file to include all design pattern diagrams
 
 ' I. Pattern de création

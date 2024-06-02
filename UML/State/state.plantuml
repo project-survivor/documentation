@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface CharacterState {
     +handleInput(): void
     +update(): void
@@ -33,5 +36,7 @@ CharacterState <|.. PoisonedState
 CharacterState <|.. EnragedState
 
 Character o-- CharacterState
+
+!endif
 
 @enduml

@@ -2,6 +2,9 @@
 
 title Spell Decorator Pattern
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface ISpell {
     +name
     +damage
@@ -67,5 +70,7 @@ SpellDecorator <|-- FireSpellDecorator
 SpellDecorator <|-- WaterSpellDecorator
 SpellDecorator <|-- GroundSpellDecorator
 SpellDecorator <|-- AirSpellDecorator
+
+!endif
 
 @enduml

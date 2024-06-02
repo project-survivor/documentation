@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface Game {
     +login(username: String, password: String): void
     +play(): void
@@ -20,5 +23,7 @@ class GameProxy implements Game {
 
 Game <|.. RealGame
 Game <|.. GameProxy
+
+!endif
 
 @enduml

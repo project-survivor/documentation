@@ -1,6 +1,9 @@
 @startuml
 title Proxy with Singleton for JSONConfigManager Access
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface IConfiguration {
     + getConfig(key: String): String
     + setConfig(key: String, value: String): void
@@ -28,5 +31,7 @@ class Client {
 
 Client --> IConfiguration
 ConfigurationProxy --> JSONConfigManager
+
+!endif
 
 @enduml

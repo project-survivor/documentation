@@ -1,6 +1,9 @@
 @startuml
 title Observer Pattern for Game Event System
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 interface ISubscriber {
     + update(event: String, context: Object): void
 }
@@ -26,5 +29,7 @@ class EnemySystem implements ISubscriber {
 }
 
 GameEventPublisher o--> ISubscriber
+
+!endif
 
 @enduml

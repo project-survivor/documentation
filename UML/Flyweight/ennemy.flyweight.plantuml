@@ -1,6 +1,9 @@
 @startuml
 title Enemy Flyweight Pattern
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 class EnemyType {
     - name: String
     - speed: int
@@ -35,5 +38,7 @@ EnemyFactory o--> EnemyType
 GameWorld o--> Enemy
 GameWorld --> EnemyFactory
 Enemy --> EnemyType
+
+!endif
 
 @enduml

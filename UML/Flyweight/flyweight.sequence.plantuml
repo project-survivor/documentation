@@ -1,6 +1,9 @@
 @startuml
 hide footbox
 
+!ifndef DIAGRAM
+!define DIAGRAM
+
 actor Player
 participant Client
 participant FlyweightFactory
@@ -18,5 +21,7 @@ Client -> Context: new Context("orc", "location_3", factory)
 Context -> Flyweight: operation("location_1")
 Context -> Flyweight: operation("location_2")
 Context -> Flyweight: operation("location_3")
+
+!endif
 
 @enduml
