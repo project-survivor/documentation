@@ -342,8 +342,8 @@ Le pattern Chain of Responsibility évite de coupler l'expéditeur d'une requêt
 
 Elle part de l'IHM jusqu'au traitement de la requête, et il y aura différent handlers : ValidationHandler qui valide l'entrée utilisateur, ensuite si validation on passe la chaine qui va envoyer la requete via la CommandHandler, et suite à cette commande on passe le relai au DisplayHandler qui va afficher le résultat.
 
-![request.chain-of-responsibility](UML/Chain%20of%20Responsibility/request.chain-of-responsibility.png)
-> Fichier UML : [request.chain-of-responsibility](UML/Chain%20of%20Responsibility/request.chain-of-responsibility.plantuml)
+![request.chain-of-responsibility](UML/Chain%20Of%20Responsibility/request.chain-of-responsibility.png)
+> Fichier UML : [request.chain-of-responsibility](UML/Chain%20Of%20Responsibility/request.chain-of-responsibility.plantuml)
 
 ## Template Method
 
