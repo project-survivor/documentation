@@ -5,6 +5,8 @@ on:
     branches:
       - ci/plant-uml-to-png-test
 
+permissions: write-all
+
 jobs:
   generate-images:
     runs-on: ubuntu-latest
