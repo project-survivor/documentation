@@ -1,4 +1,4 @@
-@startuml EquipmentAbstractFactory
+@startuml 
 title Abstract Factory - Equipment Creation
 
 interface IEquipmentFactory {

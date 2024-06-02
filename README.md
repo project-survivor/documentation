@@ -58,9 +58,10 @@ Le pattern Singleton garantit qu'une classe n'a qu'une seule instance et fournit
 ### Gestionnaire de configuration*
 
  Pour lire et écrire des paramètres de jeu à partir d'un fichier JSON ou d'une base de données.
+ 
+![configuration.singleton](UML/Singleton/configuration.singleton.png)
 
  > Fichier UML : [configuration.singleton](UML/Singleton/configuration.singleton.plantuml)
-
 
 ## Factory Method
 
@@ -71,11 +72,15 @@ Le pattern Factory Method définit une interface pour créer un objet, mais lais
 Le joueur aura une arme de base, et pourra en acheter ou en trouver d'autres au cours de la partie.
 Les types d'armes sont : épée, arc, baguette magique
 
+![weapon.factory-method](UML/Factory%20Method/weapon.factory-method.png)
+
 > Fichier UML : [weapon.factory-method](UML/Factory%20Method/weapon.factory-method.plantuml)
 
 ### Création des sorts
 
 Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe (mage, chasseur, et guerrier). Il pourra en apprendre d'autres au cours de la partie. En bref, si tu es Mage, cela va instancier deux sorts de Mage, etc.
+
+![spell.factory-method](UML/Factory%20Method/spell.factory-method.png)
 
 > Fichier UML : [spell.factory-method](UML/Factory%20Method/spell.factory-method.plantuml)
 
@@ -83,11 +88,15 @@ Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe (mage, chasseur,
 
 Le but étant de créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
 
+![enemy.factory-method](UML/Factory%20Method/enemy.factory-method.png)
+
 > Fichier UML : [enemy.factory-method](UML/Factory%20Method/enemy.factory-method.plantuml)
 
 ### Création des collectibles 
 
 Le joueur pourra ramasser des collectibles comme des pièces d'or ou de l'expérience lui permettant de monter en niveau.
+
+![collectible.factory-method](UML/Factory%20Method/collectible.factory-method.png)
 
 > Fichier UML : [collectible.factory-method](UML/Factory%20Method/collectible.factory-method.plantuml)
 
@@ -100,6 +109,8 @@ Le pattern Abstract Factory fournit une interface pour créer des familles d'obj
 
 Lors de la création du personnage, possibilité de choisir sa classe (mage, guerrier, assassin, archer) avec pour chacune des spécificités, ainsi que sa race (humain, elfe, orc) avec pour chacune des spécificités
 
+![character.abstract-factory](UML/Abstract%20Factory/character.abstract-factory.png)
+
 > Fichier UML : [character.abstract-factory](UML/Abstract%20Factory/character.abstract-factory.plantuml)
 
 ### Création des équipements
@@ -109,6 +120,8 @@ Le joueur aura un équipement pour chacune des parties de son corps (tête, tors
 Un magicien commencera avec un équipement léger par défaut, un guerrier avec un équipement moyen par défaut et un archer avec un équipement léger par défaut. En bref, en fonction de la classe du personnage, l'équipement de base sera différent.
 
 Un équipement aura des statistiques (défense, vitesse, etc) qui pourront être améliorées au cours de la partie.
+
+![equipment.abstract-factory](UML/Abstract%20Factory/equipment.abstract-factory.png)
 
 > Fichier UML : [equipment.abstract-factory](UML/Abstract%20Factory/equipment.abstract-factory.plantuml)
 
@@ -120,6 +133,8 @@ Le pattern Builder sépare la construction d'un objet complexe de sa représenta
 
 Utiliser un `CharacterBuilder` pour créer un personnage avec des attributs comme la force, l'agilité, les compétences, et les équipements, en permettant de construire l'objet étape par étape.
 
+![character.builder](UML/Builder/character.builder.png)
+
 > Fichier UML : [character.builder](UML/Builder/character.builder.plantuml)
 
 ## Prototype
@@ -128,11 +143,15 @@ Utiliser un `CharacterBuilder` pour créer un personnage avec des attributs comm
 
 Le but étant de cloner les ennemis pour éviter de les recréer à chaque fois qu'ils apparaissent. Il y a un registre qui va stocker les ennemis clonés qui permet de stocker des ennemis qui ont déjà été copiés.
 
+![enemy.prototype](UML/Prototype/enemy.prototype.png)
+
 > Fichier UML : [enemy.prototype](UML/Prototype/enemy.prototype.plantuml)
 
 ### Construction de niveaux
 
 Un `LevelBuilder` pourrait assembler des niveaux de jeu complexes en ajoutant des ennemis, des objets, et des décorations de manière structurée.
+
+![level.builder](UML/Builder/level.builder.png)
 
 > Fichier UML : [level.builder](UML/Builder/level.builder.plantuml)
 
@@ -164,6 +183,8 @@ Le pattern Decorator attache dynamiquement des responsabilités supplémentaires
 
 L'ajout d'un des décorateurs pour des compétences ou des pouvoirs spéciaux sans modifier la classe de base du personnage.
 
+![character.decorator](UML/Decorator/character.decorator.png)
+
 > Fichier UML : [character.decorator](UML/Decorator/character.decorator.plantuml)
 
 ### Ajouter des caractéristiques aux sorts
@@ -174,11 +195,15 @@ Pour chacun de ces sorts, un élément pourra lui être affecté afin de modifie
 - Terre
 - Air
 
+![spell.decorator](UML/Decorator/spell.decorator.png)
+
 > Fichier UML : [spell.decorator](UML/Decorator/spell.decorator.plantuml)
 
 ### Ajouter des améliorations à des armes 
 
 On souhaite pouvoir améliorer les armes au cours de la partie, par exemple, une épée de base peut être décorée avec des capacités supplémentaires comme des enchantements (dégats bonus) de feu, d'eau, de terre et d'air et d'air ainsi que des effets associés.
+
+![weapon.decorator](UML/Decorator/weapon.decorator.png)
 
 > Fichier UML : [weapon.decorator](UML/Decorator/weapon.decorator.plantuml)
 
@@ -194,11 +219,15 @@ Le pattern Flyweight utilise le partage pour prendre en charge efficacement un g
 
 - **Textures et sprites** : Réutiliser les mêmes textures pour plusieurs instances d'objets visuels.
 
+![flyweight](UML/Flyweight/flyweight.png)
 > Fichier UML générique : [flyweight](UML/Flyweight/flyweight.plantuml) : le fichier est générique et ne correspond pas à un exemple précis.
 
+![flyweight](UML/Flyweight/flyweight.png)
 > Diagramme de séquence : [flyweight.sequence](UML/Flyweight/flyweight.sequence.plantuml)
 
 - **Ennemis** : Réutiliser les mêmes ennemyType (état intrinsèque) pour plusieurs instances d'ennemis.
+
+![ennemy.flyweight](UML/Flyweight/ennemy.flyweight.png)
 
 > Fichier UML : [ennemy.flyweight](UML/Flyweight/ennemy.flyweight.plantuml)
 
@@ -210,6 +239,7 @@ Le pattern Proxy fournit un substitut ou un placeholder pour un autre objet afin
 
 Utiliser un proxy pour sauvegarder la configuration du jeu dans un fichier JSON qui peut servir de pare-feu en controllant les accès, donc le client ne peut pas accéder directement au fichier JSON / base de données. On pourra utiliser ce proxy pour gérer les logs et si on fait une requete pour la sauvegarde on pourra la sauvegarder pour pouvoir la re-éxecuter en cas de soucis. Mais également on pourra en mettre en cache les requêtes récurrentes pour éviter de les refaire. 
 
+![save.proxy](UML/Proxy/save.proxy.png)
 > Fichier UML : [save.proxy](UML/Proxy/save.proxy.plantuml)
 
 # III. Pattern comportemental
@@ -222,6 +252,7 @@ Le pattern Observer définit une relation de dépendance un-à-plusieurs entre d
 
 Pour gérer les notifications de changement d'état des objets de jeu, comme les équipements qui changent en fonction des bonus ou les personnages qui réagissent aux changements de l'environnement, ou les personnages et ennemis.
 
+![event.observer](UML/Observer/event.observer.png)
 > Fichier UML : [event.observer](UML/Observer/event.observer.plantuml)
 
 ## Strategy
@@ -230,12 +261,14 @@ Pour gérer les notifications de changement d'état des objets de jeu, comme les
 
 Permettre aux ennemis d'adopter différentes stratégies de combat ou de déplacement en fonction de leur situation (par exemple, en combat de boss ou en patrouille).
 
+![enemy.strategy](UML/Strategy/enemy.strategy.png)
 > Fichier UML : [enemy.strategy](UML/Strategy/enemy.strategy.plantuml)
 
 ### Gestion des armes
 
 Utiliser différentes stratégies de tir pour des armes variées (tir en ligne droite, tir en éventail, etc.).
 
+![weapon.strategy](UML/Strategy/weapon.strategy.png)
 > Fichier UML : [weapon.strategy](UML/Strategy/weapon.strategy.plantuml)
 
 ## Command
@@ -246,6 +279,7 @@ Le pattern Command encapsule une requête en tant qu'objet, permettant de param�
 
 Encapsuler les actions du joueur (attaquer, déplacer, utiliser un objet) en commandes, permettant de les mettre en file d'attente, de les annuler ou de les répéter. 
 
+![player.command](UML/Command/player.command.png)
 > Fichier UML : [player.command](UML/Command/player.command.plantuml)
 
 ## State
@@ -256,12 +290,14 @@ Le pattern State permet à un objet de modifier son comportement lorsque son ét
 
 Gérer les états d'un personnage comme normal, empoisonné, enragé, etc., en modifiant son comportement en fonction de son état actuel.
 
+![character.state](UML/State/character.state.png)
 > Fichier UML : [character.state](UML/State/character.state.plantuml)
 
 ### Etat de phase de niveau
 
 Gérer les différentes phases d'un niveau de jeu (exploration, combat, boss) en changeant l'état de la scène.
 
+![level.state](UML/State/level.state.png)
 > Fichier UML : [level.state](UML/State/level.state.plantuml)
 
 ## Visitor
@@ -273,6 +309,7 @@ On utilise ce pattern lorsque on doit faire un certain type d’opérations sur 
 
 Différents types d'ennemis peuvent être visités par un DamageVisitor qui va appliquer des dégâts selon l'objet par lequel ils sont touchés (ItemA, ItemB)
 
+![damage.visitor](UML/Visitor/damage.visitor.png)
 > Fichier UML : [damage.visitor](UML/Visitor/damage.visitor.plantuml)
 
 ## Memento
@@ -283,6 +320,7 @@ Le pattern Memento capture et externalise l'état interne d'un objet sans violer
 
 Il permet de sauvegarder l'état du jeu à des moments critiques et de restaurer cet état plus tard, par exemple pour des fonctionnalités de sauvegarde/chargement ou de retour en arrière.
 
+![game.memento](UML/Memento/game.memento.png)
 > Fichier UML : [game.memento](UML/Memento/game.memento.plantuml)
 
 ## Mediator 
@@ -293,6 +331,7 @@ Le pattern Mediator définit un objet qui encapsule la façon dont un ensemble d
 
 Le médiateur du jeu gère les interactions entre les objets de jeu, comme les personnages, les ennemis, les objets, etc., en évitant les dépendances directes entre eux.  Il est nécessaire que cela ne devienne pas une clase dieu.
 
+![game.mediator](UML/Mediator/game.mediator.png)
 > Fichier UML : [game.mediator](UML/Mediator/game.mediator.plantuml)
 
 ## Chain of Responsibility
@@ -303,6 +342,7 @@ Le pattern Chain of Responsibility évite de coupler l'expéditeur d'une requêt
 
 Elle part de l'IHM jusqu'au traitement de la requête, et il y aura différent handlers : ValidationHandler qui valide l'entrée utilisateur, ensuite si validation on passe la chaine qui va envoyer la requete via la CommandHandler, et suite à cette commande on passe le relai au DisplayHandler qui va afficher le résultat.
 
+![request.chain-of-responsibility](UML/Chain%20of%20Responsibility/request.chain-of-responsibility.png)
 > Fichier UML : [request.chain-of-responsibility](UML/Chain%20of%20Responsibility/request.chain-of-responsibility.plantuml)
 
 ## Template Method
@@ -313,6 +353,7 @@ Le pattern Template Method définit le squelette d'un algorithme dans une métho
 
 Le but est de définir un processus de génération de niveaux différent niveaux tel qu'une grotte et un donjon, en laissant les sous-classes définir les détails de la génération. Il y a une méthode commune (template method) qui va générer le niveau (appeler les différentes méthodes), mais les sous-classes peuvent définir les détails de la génération (permet d'étendre certaines étapes de l'algorithme sans changer la structure de l'algorithme).
 
+![level.template-method](UML/Template%20Method/level.template-method.png)
 > Fichier UML : [level.template-method](UML/Template%20Method/level.template-method.plantuml)
 
 ## Iterator

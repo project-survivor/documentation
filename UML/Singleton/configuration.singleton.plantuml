@@ -1,14 +1,10 @@
 @startuml
 hide footbox
 
-class Singleton {
-    -instance: Singleton
-    +getInstance(): Singleton
-}
-
 class JSONConfigManager {
     -instance: JSONConfigManager
     -jsonData: String
+    -JSONConfigManager()
     +getInstance(): JSONConfigManager
     +loadDataFromDisk(): void
     +saveDataToDisk(): void
