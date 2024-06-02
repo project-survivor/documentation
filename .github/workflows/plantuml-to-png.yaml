@@ -35,7 +35,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add UML/**/*.png
+        git add *
         git commit -m "Add generated PNG files"
         git push origin ci/plant-uml-to-png-test
       env:
