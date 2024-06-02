@@ -1,6 +1,5 @@
 @startuml
 
-title Weapon Factory Method
 
 abstract class WeaponFactory {
     {abstract} +createWeapon() : IWeapon

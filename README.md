@@ -72,33 +72,33 @@ Le pattern Factory Method définit une interface pour créer un objet, mais lais
 Le joueur aura une arme de base, et pourra en acheter ou en trouver d'autres au cours de la partie.
 Les types d'armes sont : épée, arc, baguette magique
 
-![weapon.factory-method](UML/Factory%20Method/weapon.factory-method.png)
+![weapon.factory-method](UML/Factory_Method/weapon.factory-method.png)
 
-> Fichier UML : [weapon.factory-method](UML/Factory%20Method/weapon.factory-method.plantuml)
+> Fichier UML : [weapon.factory-method](UML/Factory_Method/weapon.factory-method.plantuml)
 
 ### Création des sorts
 
 Le joueur commencera avec 1 ou 2 sorts en fonction de sa classe (mage, chasseur, et guerrier). Il pourra en apprendre d'autres au cours de la partie. En bref, si tu es Mage, cela va instancier deux sorts de Mage, etc.
 
-![spell.factory-method](UML/Factory%20Method/spell.factory-method.png)
+![spell.factory-method](UML/Factory_Method/spell.factory-method.png)
 
-> Fichier UML : [spell.factory-method](UML/Factory%20Method/spell.factory-method.plantuml)
+> Fichier UML : [spell.factory-method](UML/Factory_Method/spell.factory-method.plantuml)
 
 ### Création des ennemis 
 
 Le but étant de créer différents types d'ennemis comme des zombies, des vampires ou des loups-garous en fonction du niveau ou de la zone.
 
-![enemy.factory-method](UML/Factory%20Method/enemy.factory-method.png)
+![enemy.factory-method](UML/Factory_Method/enemy.factory-method.png)
 
-> Fichier UML : [enemy.factory-method](UML/Factory%20Method/enemy.factory-method.plantuml)
+> Fichier UML : [enemy.factory-method](UML/Factory_Method/enemy.factory-method.plantuml)
 
 ### Création des collectibles 
 
 Le joueur pourra ramasser des collectibles comme des pièces d'or ou de l'expérience lui permettant de monter en niveau.
 
-![collectible.factory-method](UML/Factory%20Method/collectible.factory-method.png)
+![collectible.factory-method](UML/Factory_Method/collectible.factory-method.png)
 
-> Fichier UML : [collectible.factory-method](UML/Factory%20Method/collectible.factory-method.plantuml)
+> Fichier UML : [collectible.factory-method](UML/Factory_Method/collectible.factory-method.plantuml)
 
 
 ## Abstract Factory
@@ -109,9 +109,9 @@ Le pattern Abstract Factory fournit une interface pour créer des familles d'obj
 
 Lors de la création du personnage, possibilité de choisir sa classe (mage, guerrier, assassin, archer) avec pour chacune des spécificités, ainsi que sa race (humain, elfe, orc) avec pour chacune des spécificités
 
-![character.abstract-factory](UML/Abstract%20Factory/character.abstract-factory.png)
+![character.abstract-factory](UML/Abstract_Factory/character.abstract-factory.png)
 
-> Fichier UML : [character.abstract-factory](UML/Abstract%20Factory/character.abstract-factory.plantuml)
+> Fichier UML : [character.abstract-factory](UML/Abstract_Factory/character.abstract-factory.plantuml)
 
 ### Création des équipements
 
@@ -121,9 +121,9 @@ Un magicien commencera avec un équipement léger par défaut, un guerrier avec 
 
 Un équipement aura des statistiques (défense, vitesse, etc) qui pourront être améliorées au cours de la partie.
 
-![equipment.abstract-factory](UML/Abstract%20Factory/equipment.abstract-factory.png)
+![equipment.abstract-factory](UML/Abstract_Factory/equipment.abstract-factory.png)
 
-> Fichier UML : [equipment.abstract-factory](UML/Abstract%20Factory/equipment.abstract-factory.plantuml)
+> Fichier UML : [equipment.abstract-factory](UML/Abstract_Factory/equipment.abstract-factory.plantuml)
 
 ## Builder
 
@@ -342,8 +342,8 @@ Le pattern Chain of Responsibility évite de coupler l'expéditeur d'une requêt
 
 Elle part de l'IHM jusqu'au traitement de la requête, et il y aura différent handlers : ValidationHandler qui valide l'entrée utilisateur, ensuite si validation on passe la chaine qui va envoyer la requete via la CommandHandler, et suite à cette commande on passe le relai au DisplayHandler qui va afficher le résultat.
 
-![request.chain-of-responsibility](UML/Chain%20Of%20Responsibility/request.chain-of-responsibility.png)
-> Fichier UML : [request.chain-of-responsibility](UML/Chain%20Of%20Responsibility/request.chain-of-responsibility.plantuml)
+![request.chain-of-responsibility](UML/Chain_Of_Responsibility/request.chain-of-responsibility.png)
+> Fichier UML : [request.chain-of-responsibility](UML/Chain_Of_Responsibility/request.chain-of-responsibility.plantuml)
 
 ## Template Method
 
@@ -353,8 +353,8 @@ Le pattern Template Method définit le squelette d'un algorithme dans une métho
 
 Le but est de définir un processus de génération de niveaux différent niveaux tel qu'une grotte et un donjon, en laissant les sous-classes définir les détails de la génération. Il y a une méthode commune (template method) qui va générer le niveau (appeler les différentes méthodes), mais les sous-classes peuvent définir les détails de la génération (permet d'étendre certaines étapes de l'algorithme sans changer la structure de l'algorithme).
 
-![level.template-method](UML/Template%20Method/level.template-method.png)
-> Fichier UML : [level.template-method](UML/Template%20Method/level.template-method.plantuml)
+![level.template-method](UML/Template_Method/level.template-method.png)
+> Fichier UML : [level.template-method](UML/Template_Method/level.template-method.plantuml)
 
 ## Iterator
 

@@ -1,0 +1,37 @@
+@startuml
+allowmixing
+' Master PlantUML file to include all design pattern diagrams
+
+' I. Pattern de création
+!include UML/Singleton/configuration.singleton.plantuml
+'!include UML/Factory_Method/weapon.factory-method.plantuml
+'!include UML/Factory_Method/spell.factory-method.plantuml
+'!include UML/Factory%20Method/enemy.factory-method.plantuml
+'!include UML/Factory%20Method/collectible.factory-method.plantuml
+'!include UML/Abstract%20Factory/character.abstract-factory.plantuml
+'!include UML/Abstract%20Factory/equipment.abstract-factory.plantuml
+!include UML/Builder/character.builder.plantuml
+!include UML/Prototype/enemy.prototype.plantuml
+!include UML/Builder/level.builder.plantuml
+
+' II. Pattern structurel
+!include UML/Decorator/character.decorator.plantuml
+!include UML/Decorator/spell.decorator.plantuml
+!include UML/Decorator/weapon.decorator.plantuml
+!include UML/Flyweight/ennemy.flyweight.plantuml
+!include UML/Proxy/save.proxy.plantuml
+
+' III. Pattern comportemental
+!include UML/Observer/event.observer.plantuml
+!include UML/Strategy/enemy.strategy.plantuml
+!include UML/Strategy/weapon.strategy.plantuml
+!include UML/Command/player.command.plantuml
+!include UML/State/character.state.plantuml
+!include UML/State/level.state.plantuml
+!include UML/Visitor/damage.visitor.plantuml
+'!include UML/Memento/game.memento.plantuml
+!include UML/Mediator/game.mediator.plantuml
+'!include UML/Chain_Of_Responsibility/request.chain-of-responsibility.plantuml
+!include UML/Template_Method/level.template-method.plantuml
+
+@enduml
