@@ -3,7 +3,7 @@ name: PlantUML to Image
 on: 
   push:
     branches:
-      - ci/plant-uml-to-png-test
+      - master
 
 permissions: write-all
 
@@ -40,6 +40,6 @@ jobs:
         git config --local user.name "GitHub Action"
         git add UML/**/*.png
         git commit -m "bot(ci): add generated PNG files from .plantuml diagrams"
-        git push origin ci/plant-uml-to-png-test
+        git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
