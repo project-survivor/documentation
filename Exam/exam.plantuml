@@ -19,7 +19,7 @@ class Peon extends Unité {
 }
 
 class Epeiste extends Unité {
-    ameliorationDecorator: IAmelioration[]
+    +decorateEpeisteAmeliorer() : void
 }
 
 class UniteElite extends Unité {
@@ -145,28 +145,39 @@ interface Observateur {
 
 ' #############################
 ' Decorator and Chain of Responsibility for IAmelioration
-interface IAmelioration {
-    +appliquer(epeiste: Epeiste) : void
+' interface IAmelioration {
+'     +appliquer(epeiste: Epeiste) : void
+' }
+
+' Epeiste "1" <--o "0..*" IAmelioration
+
+abstract class AmeliorationBase extends Epeiste {
+    -prochaineAmelioration: Epeiste
+    +setProchaineAmelioration(next: Epeiste) : void
+    +decorateEpeisteAmeliorer() : void
+    +handle(request) : void
 }
 
-Epeiste "1" <--o "0..*" IAmelioration
+note right of AmeliorationBase
+    - "Decorator" du pattern Decorator
+    - "Handler" du pattern Chain of Responsibility
+end note
 
-abstract class AmeliorationBase implements IAmelioration {
-    -prochaineAmelioration: IAmelioration
-    +setProchaineAmelioration(next: IAmelioration) : void
-    +appliquer(epeiste: Epeiste) : void
-}
+AmeliorationBase "1" o--> "1" Epeiste
 
 class AmeliorationVitesse extends AmeliorationBase {
-    +appliquer(epeiste: Epeiste) : void
+    +decorateEpeisteAmeliorer() : void
+    +handle(request) : void
 }
 
 class AmeliorationForce extends AmeliorationBase {
-    +appliquer(epeiste: Epeiste) : void
+    +decorateEpeisteAmeliorer() : void
+    +handle(request) : void
 }
 
 class AmeliorationPointsDeVie extends AmeliorationBase {
-    +appliquer(epeiste: Epeiste) : void
+    +decorateEpeisteAmeliorer() : void
+    +handle(request) : void
 }
 
 ' Flyweight pattern for Unité
