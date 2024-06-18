@@ -1,0 +1,199 @@
+@startuml de
+
+' Unités factory method
+class UnitéFactory {
+    +créerUnité() : Unité
+}
+
+abstract class Unité {
+    -x: int
+    -y: int
+    -pointsDeVie: int
+    ' -vitesse: int
+    ' -forceAttaque: int
+    +attaquer() : void
+    +mourir() : void
+}
+
+class Peon extends Unité {
+}
+
+class Epeiste extends Unité {
+    ameliorationDecorator: IAmelioration[]
+}
+
+class UniteElite extends Unité {
+}
+
+UnitéFactory ..> Peon : instancie
+UnitéFactory ..> Epeiste : instancie
+UnitéFactory ..> UniteElite : instancie
+
+' #############################
+' Bâtiments factory method
+abstract class Bâtiment {
+    -coûtBois: int
+    -coûtPierre: int
+    +créerUnité() : Unité
+}
+
+class Forum extends Bâtiment {
+}
+
+class Caserne extends Bâtiment {
+}
+
+class Chateau extends Bâtiment {
+}
+
+class Labo extends Bâtiment {
+}
+
+class BâtimentFactory {
+    +créerBâtiment() : Bâtiment
+}
+
+BâtimentFactory ..> Forum : instancie
+BâtimentFactory ..> Caserne : instancie
+BâtimentFactory ..> Chateau : instancie
+BâtimentFactory ..> Labo : instancie
+
+' #############################
+' State pattern for Joueur
+interface EtatJoueur {
+    +action(joueur: Joueur) : void
+}
+
+class EtatVaincu implements EtatJoueur {
+    +action(joueur: Joueur) : void
+}
+
+class EtatNormal implements EtatJoueur {
+    +action(joueur: Joueur) : void
+}
+
+class Joueur {
+    -etat: EtatJoueur
+    +setEtat(etat: EtatJoueur) : void
+    +construireBâtiment() : void
+    +créerUnité() : void
+}
+
+Joueur "0..*" o--> "1" EtatJoueur
+
+' #############################
+' Composite pattern for Terrain
+abstract class TerrainElement {
+    +afficher() : void
+    +ajouter(element: TerrainElement) : void
+    +retirer(element: TerrainElement) : void
+}
+
+note right of TerrainElement
+    TerrainElement est notre "Component"
+    du pattern composite
+end note
+
+abstract class Ressource extends TerrainElement {
+    -type: String
+    -quantité: int
+    -observateurs: List<Observateur>
+    
+    +afficher() : void
+    +ajouter(element: TerrainElement) : void
+    +retirer(element: TerrainElement) : void
+
+    +ajouterObservateur(observateur: Observateur) : void
+    +notifierObservateurs() : void
+}
+
+note right of Ressource
+    Ressource est notre LEAF du composite
+    Ressource est notre SUBJECT du Observer
+end note
+
+Ressource "1" o--> "0..*" Observateur
+
+class Bois extends Ressource {
+    -quantiteBois: int
+}
+
+class Pierre extends Ressource {
+    -quantitePierre: int
+}
+
+class EspaceDeTerre extends TerrainElement implements Observateur {
+    +ajouter(element: TerrainElement) : void
+    +retirer(element: TerrainElement) : void
+    +afficher() : void
+
+    +miseAJour(quantiteBois: int, quantitePierre: int) : void
+}
+
+note right of EspaceDeTerre
+    est notre COMPOSITE 
+    est notre OBSERVABLE de nos Ressources
+end note
+
+EspaceDeTerre "1" o--> "1..*" TerrainElement
+
+' #############################
+' Observer pattern for Ressources
+interface Observateur {
+    +miseAJour(quantiteBois: int, quantitePierre: int) : void
+}
+
+' #############################
+' Decorator and Chain of Responsibility for IAmelioration
+interface IAmelioration {
+    +appliquer(epeiste: Epeiste) : void
+}
+
+Epeiste "1" <--o "0..*" IAmelioration
+
+abstract class AmeliorationBase implements IAmelioration {
+    -prochaineAmelioration: IAmelioration
+    +setProchaineAmelioration(next: IAmelioration) : void
+    +appliquer(epeiste: Epeiste) : void
+}
+
+class AmeliorationVitesse extends AmeliorationBase {
+    +appliquer(epeiste: Epeiste) : void
+}
+
+class AmeliorationForce extends AmeliorationBase {
+    +appliquer(epeiste: Epeiste) : void
+}
+
+class AmeliorationPointsDeVie extends AmeliorationBase {
+    +appliquer(epeiste: Epeiste) : void
+}
+
+' Flyweight pattern for Unité
+class UnitéType {
+    -type: String
+    -pointsDeVieBase: int
+    -vitesseBase: int
+    -forceAttaqueBase: int
+}
+
+class UnitéFlyweightFactory {
+    -unitésType: UnitéType[]
+    +getFlyweight(type: String, pointsDeVieBase: int, vitesseBase: int, forceAttaqueBase: int) : UnitéFlyweight
+}
+
+UnitéFlyweightFactory "1" o--> "0..*" UnitéType
+Unité "1" --> "1" UnitéType 
+Army "1" --> "0..*" UnitéFlyweightFactory
+Army "1" o--> "0..*" Unité
+
+' ?? a mediter SI ca s'appelle Army ce quil faut mettre
+class Army { 
+    -unités: Unité[]
+    +ajouterUnité(unité: Unité) : void
+    +supprimerUnité(unité: Unité) : void
+}
+
+
+
+@enduml
