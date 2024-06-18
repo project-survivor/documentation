@@ -20,43 +20,33 @@ class PatrolBehavior implements EnemyBehavior {
 Vampire o--> EnemyBehavior
 Werewolf o--> EnemyBehavior
 Zombie o--> EnemyBehavior
- 
-interface IEnemy {
-    +attack(): void
-    +clone(): IEnemy
-}
+
 
 class Zombie {
     -x: int
     -y: int
-    -type: EnemyType
     -behavior: EnemyBehavior
     +setBehavior(behavior: EnemyBehavior): void
     +performAction(): void
     +abstract attack(): void
-    +clone(): IEnemy
 }
 
 class Vampire {
     -x: int
     -y: int
-    -type: EnemyType
     -behavior: EnemyBehavior
     +setBehavior(behavior: EnemyBehavior): void
     +performAction(): void
     +abstract attack(): void
-    +clone(): IEnemy
 }
 
 class Werewolf {
     -x: int
     -y: int
-    -type: EnemyType
     -behavior: EnemyBehavior
     +setBehavior(behavior: EnemyBehavior): void
     +performAction(): void
     +abstract attack(): void
-    +clone(): IEnemy
 }
 
 
